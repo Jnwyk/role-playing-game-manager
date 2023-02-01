@@ -1,0 +1,20 @@
+{
+  "name": "role-playing-game-manager",
+  "version": "1.0.0",
+  "description": "inzynierka",
+  "main": "index.js",
+  "scripts": {
+    "install:client": "cd client && npm start",
+    "install:server": "cd server && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jnwyk/role-playing-game-manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jnwyk/role-playing-game-manager/issues"
+  },
+  "homepage": "https://github.com/Jnwyk/role-playing-game-manager#readme"
+}
