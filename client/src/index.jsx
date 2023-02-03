@@ -1,10 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import { HashRouter, Route, Routes } from "react-router-dom";
+
+import Tests from "./pages/tests";
 
 const App = () => (
   <React.StrictMode>
-    <div>Hello</div>
+    <HashRouter>
+      <Routes>
+        <Route path="/tests" element={<Tests />} />
+      </Routes>
+    </HashRouter>
   </React.StrictMode>
 );
 
