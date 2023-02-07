@@ -1,6 +1,7 @@
 import Button from "../components/button/Button";
 import RegisterForm from "../components/register-form/RegisterForm";
 import TextInput from "../components/text-input/TextInput";
+import LoginFooter from "../components/login-footer/LoginFooter";
 
 const Tests = () => {
   return (
@@ -13,6 +14,11 @@ const Tests = () => {
       <br />
       <h2>&lt;Register Form /&gt;</h2>
       <RegisterForm />
+      <br />
+      <div>
+        <h2>&lt;Login Footer /&gt;</h2>
+        <LoginFooter />
+      </div>
     </main>
   );
 };
