@@ -9,11 +9,10 @@
   line-height: 40px;
   color: white;
   border: none;
-  transition: 1s;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  transition: 0.5s;
 }
 
 .button:hover{
   background-color: #546e5a;
-  box-sizing: 0 0 4px rgba(0, 0, 0, 0.25);
-  border-radius: 0;
 }
