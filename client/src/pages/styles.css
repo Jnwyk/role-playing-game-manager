@@ -1,0 +1,13 @@
+.button-top-right{
+  position: absolute;
+  right: 80px;
+  top: 54px;
+  border-radius: 0;
+}
+
+.central-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
