@@ -7,6 +7,11 @@
   border: none;
   border-bottom: 2px solid #6D8B74;
   outline: none;
+  transition: 0.3s;
+}
+
+.text-input.wrong{
+  border-bottom: 2px solid #ff3333;
 }
 
 .text-input::placeholder{

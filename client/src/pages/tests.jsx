@@ -1,4 +1,5 @@
 import Button from "../components/button/Button";
+import RegisterForm from "../components/register-form/RegisterForm";
 import TextInput from "../components/text-input/TextInput";
 
 const Tests = () => {
@@ -9,6 +10,9 @@ const Tests = () => {
       <br />
       <h2>&lt;Button /&gt;</h2>
       <Button>Register</Button>
+      <br />
+      <h2>&lt;Register Form /&gt;</h2>
+      <RegisterForm />
     </main>
   );
 };
