@@ -42,8 +42,8 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="register-form__container">
-      <form onSubmit={handleSetUserForm} className="register-form__form">
+    <div className="login-form__container">
+      <form onSubmit={handleSetUserForm} className="login-form__form">
         <TextInput
           placeholder="Username"
           id="username"
