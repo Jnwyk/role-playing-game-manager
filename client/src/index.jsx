@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import Register from "./pages/register";
+import Login from "./pages/login";
 import Tests from "./pages/tests";
 
 const App = () => (
@@ -10,6 +11,7 @@ const App = () => (
       <Routes>
         <Route path="/tests" element={<Tests />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </HashRouter>
   </React.StrictMode>

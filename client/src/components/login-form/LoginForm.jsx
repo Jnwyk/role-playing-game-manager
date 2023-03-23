@@ -2,13 +2,19 @@ import "./LoginForm.css";
 import TextInput from "../text-input/TextInput";
 import Button from "../button/Button";
 import { useState } from "react";
-import validateRegister from "../../helpers/validateRegister";
+import RedirectText from "../redirect-text/RedirectText";
 
 const LoginForm = () => {
   const [userForm, setUserForm] = useState({
     username: "",
     password: "",
   });
+  const [signIn, setSignIn] = useState("traditional");
+
+  const handleSetSignIn = () => {
+    if (signIn === "traditional") setSignIn("google");
+    else setSignIn("traditional");
+  };
 
   const handleSetUserForm = (e) => {
     e.preventDefault();
@@ -19,15 +25,26 @@ const LoginForm = () => {
     });
   };
 
-  return (
-    <div className="login-form__container">
-      <form onSubmit={handleSetUserForm} className="login-form__form">
-        <TextInput placeholder="Username" id="username" />
-        <TextInput placeholder="Password" id="password" />
-        <Button type="submit ">Login</Button>
-      </form>
-    </div>
-  );
+  if (signIn === "google")
+    return (
+      <div className="login-form__container">
+        <form onSubmit={handleSetUserForm} className="login-form__form">
+          <TextInput placeholder="Username" id="username" />
+          <TextInput placeholder="Password" id="password" />
+          <Button type="submit ">Login</Button>
+        </form>
+        <RedirectText loginType={signIn} onClick={handleSetSignIn} />
+      </div>
+    );
+  else
+    return (
+      <div className="login-form__container">
+        <form onSubmit={handleSetUserForm} className="login-form__form">
+          <Button type="submit ">Google</Button>
+        </form>
+        <RedirectText loginType={signIn} onClick={handleSetSignIn} />
+      </div>
+    );
 };
 
 export default LoginForm;
