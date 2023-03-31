@@ -14,13 +14,8 @@ const RegisterForm = () => {
   });
   const [signIn, setSignIn] = useState("traditional");
 
-  const handleSetUserForm = (e) => {
-    e.preventDefault();
-    setUserForm({
-      username: e.target[0].value,
-      email: e.target[1].value,
-      password: e.target[2].value,
-    });
+  const handleSetRegisterForm = (name, value) => {
+    setUserForm({ ...userForm, [name]: value });
   };
 
   const handleSetSignIn = () => {
@@ -41,9 +36,21 @@ const RegisterForm = () => {
   else
     return (
       <FormCard>
-        <TextInput placeholder="Username" id="username" />
-        <TextInput placeholder="Email" id="email" />
-        <TextInput placeholder="Password" id="password" />
+        <TextInput
+          placeholder="Username"
+          id="username"
+          onChange={(value) => handleSetRegisterForm("username", value)}
+        />
+        <TextInput
+          placeholder="Email"
+          id="email"
+          onChange={(value) => handleSetRegisterForm("email", value)}
+        />
+        <TextInput
+          placeholder="Password"
+          id="password"
+          onChange={(value) => handleSetRegisterForm("password", value)}
+        />
         <Button type="submit ">Register</Button>
         <RedirectText loginType={signIn} onClick={handleSetSignIn} />
       </FormCard>

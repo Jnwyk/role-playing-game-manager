@@ -18,13 +18,8 @@ const LoginForm = () => {
     else setSignIn("traditional");
   };
 
-  const handleSetUserForm = (e) => {
-    e.preventDefault();
-    setUserForm({
-      username: e.target[0].value,
-      email: e.target[1].value,
-      password: e.target[2].value,
-    });
+  const handleSetRegisterForm = (name, value) => {
+    setUserForm({ ...userForm, [name]: value });
   };
 
   if (signIn === "google")
@@ -40,8 +35,16 @@ const LoginForm = () => {
   else
     return (
       <FormCard>
-        <TextInput placeholder="Username" id="username" />
-        <TextInput placeholder="Password" id="password" />
+        <TextInput
+          placeholder="Username"
+          id="username"
+          onChange={(value) => handleSetRegisterForm("username", value)}
+        />
+        <TextInput
+          placeholder="Password"
+          id="password"
+          onChange={(value) => handleSetRegisterForm("password", value)}
+        />
         <Button type="submit">Login</Button>
         <RedirectText loginType={signIn} onClick={handleSetSignIn} />
       </FormCard>

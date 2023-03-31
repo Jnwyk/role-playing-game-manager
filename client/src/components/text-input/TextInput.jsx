@@ -1,6 +1,6 @@
 import "./TextInput.css";
 
-const TextInput = ({ placeholder, id }) => {
+const TextInput = ({ placeholder, id, onChange }) => {
   return (
     <input
       className={`text-input`}
@@ -9,6 +9,7 @@ const TextInput = ({ placeholder, id }) => {
       name={id}
       placeholder={placeholder}
       autoComplete="off"
+      onChange={(e) => onChange(e.target.value)}
     />
   );
 };
