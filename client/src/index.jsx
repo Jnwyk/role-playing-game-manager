@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import Register from "./pages/register";
 import Login from "./pages/login";
@@ -11,7 +11,7 @@ const App = () => (
       <Routes>
         <Route path="/tests" element={<Tests />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
       </Routes>
     </HashRouter>
   </React.StrictMode>

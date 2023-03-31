@@ -3,12 +3,12 @@ import "./LoginFooter.css";
 
 const Footer = () => {
   return (
-    <footer className="footer-container">
+    <footer className="footer">
       <a href="https://github.com/Jnwyk">
         <svg
-          width="56"
-          height="55"
-          viewBox="0 0 56 55"
+          width="45"
+          height="45"
+          viewBox="0 0 56 56"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -21,9 +21,9 @@ const Footer = () => {
       </a>
       <a href="https://www.linkedin.com/in/jan-nowak-678613243/">
         <svg
-          width="56"
-          height="57"
-          viewBox="0 0 56 57"
+          width="45"
+          height="45"
+          viewBox="0 0 56 56"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >

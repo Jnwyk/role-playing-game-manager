@@ -2,67 +2,59 @@ import "./RegisterForm.css";
 import TextInput from "../text-input/TextInput";
 import Button from "../button/Button";
 import { useState } from "react";
-import validateRegister from "../../helpers/validateRegister";
+import RedirectText from "../redirect-text/RedirectText";
+import GoogleButton from "react-google-button";
+import FormCard from "../form-card/FormCard.jsx";
 
 const RegisterForm = () => {
-  const [isFormRight, setIsFormRight] = useState({
-    username: true,
-    email: true,
-    password: true,
-  });
   const [userForm, setUserForm] = useState({
     username: "",
     email: "",
     password: "",
   });
+  const [signIn, setSignIn] = useState("traditional");
 
-  const handleSetUserForm = (e) => {
-    e.preventDefault();
-    if (
-      validateRegister(e.target[0].value, e.target[1].value, e.target[2].value)
-    ) {
-      setIsFormRight({
-        username: true,
-        email: true,
-        password: true,
-      });
-      setUserForm({
-        username: e.target[0].value,
-        email: e.target[1].value,
-        password: e.target[2].value,
-      });
-    } else {
-      setIsFormRight(false);
-      setUserForm({
-        username: "",
-        email: "",
-        password: "",
-      });
-    }
+  const handleSetRegisterForm = (name, value) => {
+    setUserForm({ ...userForm, [name]: value });
   };
 
-  return (
-    <div className="login-form__container">
-      <form onSubmit={handleSetUserForm} className="login-form__form">
+  const handleSetSignIn = () => {
+    if (signIn === "traditional") setSignIn("google");
+    else setSignIn("traditional");
+  };
+
+  if (signIn === "google")
+    return (
+      <FormCard>
+        <GoogleButton
+          className="login-form__google-button"
+          onClick={() => console.log("Logged in with Google")}
+        />
+        <RedirectText loginType={signIn} onClick={handleSetSignIn} />
+      </FormCard>
+    );
+  else
+    return (
+      <FormCard>
         <TextInput
           placeholder="Username"
           id="username"
-          isRight={isFormRight ? "right" : "wrong"}
+          onChange={(value) => handleSetRegisterForm("username", value)}
         />
         <TextInput
           placeholder="Email"
           id="email"
-          isRight={isFormRight ? "right" : "wrong"}
+          onChange={(value) => handleSetRegisterForm("email", value)}
         />
         <TextInput
           placeholder="Password"
           id="password"
-          isRight={isFormRight ? "right" : "wrong"}
+          onChange={(value) => handleSetRegisterForm("password", value)}
         />
         <Button type="submit ">Register</Button>
-      </form>
-    </div>
-  );
+        <RedirectText loginType={signIn} onClick={handleSetSignIn} />
+      </FormCard>
+    );
 };
 
 export default RegisterForm;
