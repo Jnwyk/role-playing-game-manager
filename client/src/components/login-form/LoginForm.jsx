@@ -3,6 +3,7 @@ import TextInput from "../text-input/TextInput";
 import Button from "../button/Button";
 import { useState } from "react";
 import RedirectText from "../redirect-text/RedirectText";
+import GoogleButton from "react-google-button";
 
 const LoginForm = () => {
   const [userForm, setUserForm] = useState({
@@ -40,7 +41,10 @@ const LoginForm = () => {
     return (
       <div className="login-form__container">
         <form onSubmit={handleSetUserForm} className="login-form__form">
-          <Button type="submit ">Google</Button>
+          <GoogleButton
+            className="login-form__google-button"
+            onClick={() => console.log("Logged in with Google")}
+          />
         </form>
         <RedirectText loginType={signIn} onClick={handleSetSignIn} />
       </div>

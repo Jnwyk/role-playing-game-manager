@@ -1,9 +1,8 @@
 .button{
-  width: 180px;
-  height: 48px;
+  width: 140px;
+  height: 40px;
   background-color: #6D8B74;
-  border-radius: 10px;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 700;
   text-align: center;
   line-height: 40px;

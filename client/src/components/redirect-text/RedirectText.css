@@ -4,4 +4,5 @@
 
 .redirect-text strong{
   text-decoration: underline;
+  cursor: pointer;
 }
