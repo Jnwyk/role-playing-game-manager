@@ -1,17 +1,17 @@
-.footer-container{
+.footer{
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   bottom: 0;
   left: 50%;
-  width: 20%;
+  width: 15%;
   transform: translateX(-50%);
   border-top: 1px solid white;
 }
 
-.footer-container a{
+.footer a{
   width: 15%;
   color: white;
-  margin: 8px 16px
+  margin: 8px 16px;
 }
