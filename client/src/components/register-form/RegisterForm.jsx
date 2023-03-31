@@ -4,6 +4,8 @@ import Button from "../button/Button";
 import { useState } from "react";
 import validateRegister from "../../helpers/validateRegister";
 import Card from "../card/Card.jsx";
+import RedirectText from "../redirect-text/RedirectText";
+import GoogleButton from "react-google-button";
 
 const RegisterForm = () => {
   const [isFormRight, setIsFormRight] = useState({
@@ -16,6 +18,7 @@ const RegisterForm = () => {
     email: "",
     password: "",
   });
+  const [signIn, setSignIn] = useState("traditional");
 
   const handleSetUserForm = (e) => {
     e.preventDefault();
@@ -42,28 +45,47 @@ const RegisterForm = () => {
     }
   };
 
-  return (
-    <Card className="login-form__container">
-      <form onSubmit={handleSetUserForm} className="login-form__form">
-        <TextInput
-          placeholder="Username"
-          id="username"
-          isRight={isFormRight ? "right" : "wrong"}
-        />
-        <TextInput
-          placeholder="Email"
-          id="email"
-          isRight={isFormRight ? "right" : "wrong"}
-        />
-        <TextInput
-          placeholder="Password"
-          id="password"
-          isRight={isFormRight ? "right" : "wrong"}
-        />
-        <Button type="submit ">Register</Button>
-      </form>
-    </Card>
-  );
+  const handleSetSignIn = () => {
+    if (signIn === "traditional") setSignIn("google");
+    else setSignIn("traditional");
+  };
+
+  if (signIn === "google")
+    return (
+      <Card className="register-form__container">
+        <form onSubmit={handleSetUserForm} className="login-form__form">
+          <GoogleButton
+            className="login-form__google-button"
+            onClick={() => console.log("Logged in with Google")}
+          />
+        </form>
+        <RedirectText loginType={signIn} onClick={handleSetSignIn} />
+      </Card>
+    );
+  else
+    return (
+      <Card className="register-form__container">
+        <form onSubmit={handleSetUserForm} className="login-form__form">
+          <TextInput
+            placeholder="Username"
+            id="username"
+            isRight={isFormRight ? "right" : "wrong"}
+          />
+          <TextInput
+            placeholder="Email"
+            id="email"
+            isRight={isFormRight ? "right" : "wrong"}
+          />
+          <TextInput
+            placeholder="Password"
+            id="password"
+            isRight={isFormRight ? "right" : "wrong"}
+          />
+          <Button type="submit ">Register</Button>
+        </form>
+        <RedirectText loginType={signIn} onClick={handleSetSignIn} />
+      </Card>
+    );
 };
 
 export default RegisterForm;

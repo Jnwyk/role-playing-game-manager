@@ -1,14 +1,3 @@
-.login-form__container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 380px;
-  height: 400px;
-  background-color: #FCDDB0;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
-}
-
 .login-form__form{
   width: 284px;
   position: relative;
@@ -21,12 +10,9 @@
   margin-bottom: 12px;
 }
 
-.login-form__form > *{
-  margin-bottom: 40px;
-}
-
 .login-form__google-button{
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  margin-bottom: 10px;
 }
