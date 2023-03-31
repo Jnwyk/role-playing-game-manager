@@ -29,23 +29,23 @@ const LoginForm = () => {
 
   if (signIn === "google")
     return (
-      <Card className="login-form__container">
-        <form onSubmit={handleSetUserForm} className="login-form__form">
-          <TextInput placeholder="Username" id="username" />
-          <TextInput placeholder="Password" id="password" />
-          <Button type="submit ">Login</Button>
-        </form>
-        <RedirectText loginType={signIn} onClick={handleSetSignIn} />
-      </Card>
-    );
-  else
-    return (
       <Card>
         <form onSubmit={handleSetUserForm} className="login-form__form">
           <GoogleButton
             className="login-form__google-button"
             onClick={() => console.log("Logged in with Google")}
           />
+        </form>
+        <RedirectText loginType={signIn} onClick={handleSetSignIn} />
+      </Card>
+    );
+  else
+    return (
+      <Card className="login-form__container">
+        <form onSubmit={handleSetUserForm} className="login-form__form">
+          <TextInput placeholder="Username" id="username" />
+          <TextInput placeholder="Password" id="password" />
+          <Button type="submit ">Login</Button>
         </form>
         <RedirectText loginType={signIn} onClick={handleSetSignIn} />
       </Card>
