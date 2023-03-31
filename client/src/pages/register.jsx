@@ -6,12 +6,8 @@ import "./styles.css";
 
 const Register = () => {
   return (
-    <div
-      style={{
-        backgroundImage: `url("/images/background.png")`,
-        height: "100vh",
-      }}
-    >
+    <>
+      <div className="background" />
       <Link to={"/"}>
         <Button className="button-top-right">Login</Button>
       </Link>
@@ -20,7 +16,7 @@ const Register = () => {
       </div>
 
       <LoginFooter />
-    </div>
+    </>
   );
 };
 
