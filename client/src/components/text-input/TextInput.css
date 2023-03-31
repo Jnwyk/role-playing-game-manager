@@ -1,13 +1,12 @@
 .text-input{
-  height: 50px;
+  height: 36px;
   width: 284px;
   padding-left: 5px;
   background-color: rgba(145,145,145, 0.2);
-  font-size: 24px;
+  font-size: 20px;
   border: none;
   border-bottom: 2px solid #6D8B74;
   outline: none;
-  transition: 0.3s;
 }
 
 .text-input.wrong{
