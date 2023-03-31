@@ -3,6 +3,7 @@ import TextInput from "../text-input/TextInput";
 import Button from "../button/Button";
 import { useState } from "react";
 import validateRegister from "../../helpers/validateRegister";
+import Card from "../card/Card.jsx";
 
 const RegisterForm = () => {
   const [isFormRight, setIsFormRight] = useState({
@@ -42,7 +43,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="login-form__container">
+    <Card className="login-form__container">
       <form onSubmit={handleSetUserForm} className="login-form__form">
         <TextInput
           placeholder="Username"
@@ -61,7 +62,7 @@ const RegisterForm = () => {
         />
         <Button type="submit ">Register</Button>
       </form>
-    </div>
+    </Card>
   );
 };
 
