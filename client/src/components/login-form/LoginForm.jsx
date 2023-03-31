@@ -4,7 +4,7 @@ import Button from "../button/Button";
 import { useState } from "react";
 import RedirectText from "../redirect-text/RedirectText";
 import GoogleButton from "react-google-button";
-import Card from "../card/Card";
+import FormCard from "../form-card/FormCard";
 
 const LoginForm = () => {
   const [userForm, setUserForm] = useState({
@@ -29,26 +29,22 @@ const LoginForm = () => {
 
   if (signIn === "google")
     return (
-      <Card>
-        <form onSubmit={handleSetUserForm} className="login-form__form">
-          <GoogleButton
-            className="login-form__google-button"
-            onClick={() => console.log("Logged in with Google")}
-          />
-        </form>
+      <FormCard>
+        <GoogleButton
+          className="login-form__google-button"
+          onClick={() => console.log("Logged in with Google")}
+        />
         <RedirectText loginType={signIn} onClick={handleSetSignIn} />
-      </Card>
+      </FormCard>
     );
   else
     return (
-      <Card className="login-form__container">
-        <form onSubmit={handleSetUserForm} className="login-form__form">
-          <TextInput placeholder="Username" id="username" />
-          <TextInput placeholder="Password" id="password" />
-          <Button type="submit ">Login</Button>
-        </form>
+      <FormCard>
+        <TextInput placeholder="Username" id="username" />
+        <TextInput placeholder="Password" id="password" />
+        <Button type="submit">Login</Button>
         <RedirectText loginType={signIn} onClick={handleSetSignIn} />
-      </Card>
+      </FormCard>
     );
 };
 

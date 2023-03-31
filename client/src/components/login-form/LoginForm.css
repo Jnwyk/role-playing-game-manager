@@ -1,15 +1,3 @@
-.login-form__form{
-  width: 284px;
-  position: relative;
-}
-
-.login-form__form .button{
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 12px;
-}
-
 .login-form__google-button{
   position: relative;
   left: 50%;

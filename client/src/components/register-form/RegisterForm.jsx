@@ -2,10 +2,9 @@ import "./RegisterForm.css";
 import TextInput from "../text-input/TextInput";
 import Button from "../button/Button";
 import { useState } from "react";
-import validateRegister from "../../helpers/validateRegister";
-import Card from "../card/Card.jsx";
 import RedirectText from "../redirect-text/RedirectText";
 import GoogleButton from "react-google-button";
+import FormCard from "../form-card/FormCard.jsx";
 
 const RegisterForm = () => {
   const [userForm, setUserForm] = useState({
@@ -31,27 +30,23 @@ const RegisterForm = () => {
 
   if (signIn === "google")
     return (
-      <Card className="register-form__container">
-        <form onSubmit={handleSetUserForm} className="login-form__form">
-          <GoogleButton
-            className="login-form__google-button"
-            onClick={() => console.log("Logged in with Google")}
-          />
-        </form>
+      <FormCard>
+        <GoogleButton
+          className="login-form__google-button"
+          onClick={() => console.log("Logged in with Google")}
+        />
         <RedirectText loginType={signIn} onClick={handleSetSignIn} />
-      </Card>
+      </FormCard>
     );
   else
     return (
-      <Card className="register-form__container">
-        <form onSubmit={handleSetUserForm} className="login-form__form">
-          <TextInput placeholder="Username" id="username" />
-          <TextInput placeholder="Email" id="email" />
-          <TextInput placeholder="Password" id="password" />
-          <Button type="submit ">Register</Button>
-        </form>
+      <FormCard>
+        <TextInput placeholder="Username" id="username" />
+        <TextInput placeholder="Email" id="email" />
+        <TextInput placeholder="Password" id="password" />
+        <Button type="submit ">Register</Button>
         <RedirectText loginType={signIn} onClick={handleSetSignIn} />
-      </Card>
+      </FormCard>
     );
 };
 
