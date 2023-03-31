@@ -8,11 +8,6 @@ import RedirectText from "../redirect-text/RedirectText";
 import GoogleButton from "react-google-button";
 
 const RegisterForm = () => {
-  const [isFormRight, setIsFormRight] = useState({
-    username: true,
-    email: true,
-    password: true,
-  });
   const [userForm, setUserForm] = useState({
     username: "",
     email: "",
@@ -22,27 +17,11 @@ const RegisterForm = () => {
 
   const handleSetUserForm = (e) => {
     e.preventDefault();
-    if (
-      validateRegister(e.target[0].value, e.target[1].value, e.target[2].value)
-    ) {
-      setIsFormRight({
-        username: true,
-        email: true,
-        password: true,
-      });
-      setUserForm({
-        username: e.target[0].value,
-        email: e.target[1].value,
-        password: e.target[2].value,
-      });
-    } else {
-      setIsFormRight(false);
-      setUserForm({
-        username: "",
-        email: "",
-        password: "",
-      });
-    }
+    setUserForm({
+      username: e.target[0].value,
+      email: e.target[1].value,
+      password: e.target[2].value,
+    });
   };
 
   const handleSetSignIn = () => {
@@ -66,21 +45,9 @@ const RegisterForm = () => {
     return (
       <Card className="register-form__container">
         <form onSubmit={handleSetUserForm} className="login-form__form">
-          <TextInput
-            placeholder="Username"
-            id="username"
-            isRight={isFormRight ? "right" : "wrong"}
-          />
-          <TextInput
-            placeholder="Email"
-            id="email"
-            isRight={isFormRight ? "right" : "wrong"}
-          />
-          <TextInput
-            placeholder="Password"
-            id="password"
-            isRight={isFormRight ? "right" : "wrong"}
-          />
+          <TextInput placeholder="Username" id="username" />
+          <TextInput placeholder="Email" id="email" />
+          <TextInput placeholder="Password" id="password" />
           <Button type="submit ">Register</Button>
         </form>
         <RedirectText loginType={signIn} onClick={handleSetSignIn} />

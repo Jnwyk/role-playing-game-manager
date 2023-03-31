@@ -1,9 +1,9 @@
 import "./TextInput.css";
 
-const TextInput = ({ placeholder, id, isRight }) => {
+const TextInput = ({ placeholder, id }) => {
   return (
     <input
-      className={`text-input${isRight === "wrong" ? " wrong" : ""}`}
+      className={`text-input`}
       type="text"
       id={id}
       name={id}
