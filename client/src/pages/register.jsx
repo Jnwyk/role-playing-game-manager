@@ -12,7 +12,7 @@ const Register = () => {
         height: "100vh",
       }}
     >
-      <Link to={"/login"}>
+      <Link to={"/"}>
         <Button className="button-top-right">Login</Button>
       </Link>
       <div className="central-container">

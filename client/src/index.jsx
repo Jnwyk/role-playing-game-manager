@@ -11,7 +11,7 @@ const App = () => (
       <Routes>
         <Route path="/tests" element={<Tests />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
       </Routes>
     </HashRouter>
   </React.StrictMode>
