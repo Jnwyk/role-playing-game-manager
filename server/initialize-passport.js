@@ -2,9 +2,18 @@ const passport = require("passport");
 const session = require("express-session");
 const JsonStore = require("express-session-json")(session);
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const data = require("../dummyUsers.json");
+const LocalStrategy = require("passport-local").Strategy;
+const data = require("./dummyUsers.json");
 
 const initialize = () => {
+  passport.use(
+    new LocalStrategy((username, password, done) => {
+      const user = data.users.find((user) => {
+        return user.username === username && user.password === password;
+      });
+      user === undefined ? done(null, false, user) : done(null, user);
+    })
+  );
   passport.use(
     new GoogleStrategy(
       {

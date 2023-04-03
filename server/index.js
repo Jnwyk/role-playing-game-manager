@@ -1,5 +1,5 @@
 const express = require("express");
-const initPassport = require("./config/initialize-auth-google.js");
+const initPassport = require("./initialize-passport.js");
 const routes = require("./routes/");
 const PORT = 3000;
 
