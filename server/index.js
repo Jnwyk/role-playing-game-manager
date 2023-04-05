@@ -1,5 +1,6 @@
 const express = require("express");
 const initPassport = require("./initialize-passport.js");
+const connectDb = require("./db/connection.js");
 const routes = require("./routes/");
 const PORT = 3000;
 
@@ -7,6 +8,8 @@ app = express();
 
 app.use(express.json());
 app.use(initPassport());
+
+connectDb();
 
 app.use("/api", routes);
 app.get("*", (req, res) => res.status(404).json({ msg: "Page not found" }));
