@@ -17,9 +17,8 @@ const initialize = () => {
   passport.use(
     new GoogleStrategy(
       {
-        clientID:
-          "343434439264-dtu1sdlfi586dfolvpgu4tm0eg5r9h16.apps.googleusercontent.com",
-        clientSecret: "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",
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.googleClientSecret,
         callbackURL: "http://localhost:3000/api/auth/login/google/redirect",
         scope: ["https://www.googleapis.com/auth/userinfo.email"],
       },
