@@ -1,8 +1,8 @@
+require("dotenv").config({ path: __dirname + "/config/.env" });
 const express = require("express");
 const initPassport = require("./initialize-passport.js");
 const connectDb = require("./db/connection.js");
 const routes = require("./routes/");
-const PORT = 3000;
 
 app = express();
 
@@ -14,4 +14,6 @@ connectDb();
 app.use("/api", routes);
 app.get("*", (req, res) => res.status(404).json({ msg: "Page not found" }));
 
-app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
+app.listen(process.env.PORT, () =>
+  console.log(`Server is listening at ${process.env.HOST}:${process.env.PORT}`)
+);
