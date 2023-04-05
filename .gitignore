@@ -1,0 +1,7 @@
+#CLIENT
+client/node_modules
+client/build
+
+#SERVER
+server/node_modules
+server/config/.env
