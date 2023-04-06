@@ -1,6 +1,7 @@
 const passport = require("passport");
 const session = require("express-session");
 const JsonStore = require("express-session-json")(session);
+const bcrypt = require("bcrypt");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("./db/models/user.js");
@@ -8,11 +9,19 @@ const data = require("./dummyUsers.json");
 
 const initialize = () => {
   passport.use(
-    new LocalStrategy((username, password, done) => {
-      const user = data.users.find((user) => {
-        return user.username === username && user.password === password;
-      });
-      user === undefined ? done(null, false, user) : done(null, user);
+    new LocalStrategy(async (username, password, done) => {
+      try {
+        let user = await User.findOne({ username: username });
+        if (user) {
+          return done(null, user);
+          // bcrypt.compare(password, user.password, (err, isMatch) =>
+          //   isMatch ? done(null, user) : done(null, false)
+          // );
+        }
+        // return done(null, false);
+      } catch (err) {
+        return done(err, false);
+      }
     })
   );
   passport.use(
@@ -29,12 +38,6 @@ const initialize = () => {
           if (user) {
             return done(null, user);
           }
-          user = new User({
-            username: profile.emails[0].value.split("@")[0],
-            email: profile.emails[0].value,
-          });
-          await user.save();
-          return done(null, user);
         } catch (err) {
           return done(err, false);
         }

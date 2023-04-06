@@ -1,7 +1,22 @@
 const { Router } = require("express");
 const passport = require("passport");
+const bcrypt = require("bcrypt");
+const User = require("../db/models/user.js");
 
 module.exports = Router()
+  .post("/signup/traditional", async (req, res) => {
+    try {
+      const user = new User({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+      });
+      await user.save();
+      return res.redirect(201, "http://localhost:3001/#/register");
+    } catch (err) {
+      return res.redirect("http://localhost:3001/#/");
+    }
+  })
   .post(
     "/login/traditional",
     passport.authenticate("local", {
@@ -14,12 +29,12 @@ module.exports = Router()
     "/login/google/redirect",
     passport.authenticate("google", {
       successRedirect: "http://localhost:3001/#/register",
-      failureRedirect: "http://localhost:3000/#/",
+      failureRedirect: "http://localhost:3001/#/",
     })
   )
   .get("/logout", (req, res, next) => {
     req.logout((err) => {
       if (err) return next(err);
     });
-    return res.redirect("http://localhost:3000/#/");
+    return res.redirect("http://localhost:3001/#/");
   });
