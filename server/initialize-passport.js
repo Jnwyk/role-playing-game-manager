@@ -13,12 +13,13 @@ const initialize = () => {
       try {
         let user = await User.findOne({ username: username });
         if (user) {
-          return done(null, user);
-          // bcrypt.compare(password, user.password, (err, isMatch) =>
-          //   isMatch ? done(null, user) : done(null, false)
-          // );
+          const match = await bcrypt.compareSync(password, user.password);
+          if (match) {
+            return done(null, user);
+          }
+          return done(null, false);
         }
-        // return done(null, false);
+        return done(null, false);
       } catch (err) {
         return done(err, false);
       }

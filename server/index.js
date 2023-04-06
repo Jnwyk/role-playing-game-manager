@@ -14,7 +14,7 @@ app.use(cors());
 connectDb();
 
 app.use("/api", routes);
-// app.get("*", (req, res) => res.status(404).json({ msg: "Page not found" }));
+app.get("*", (req, res) => res.status(404).json({ msg: "Page not found" }));
 
 app.listen(process.env.PORT, () =>
   console.log(`Server is listening at ${process.env.HOST}:${process.env.PORT}`)

@@ -9,7 +9,7 @@ module.exports = Router()
       const user = new User({
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password,
+        password: await bcrypt.hash(req.body.password, 10),
       });
       await user.save();
       return res.redirect(201, "http://localhost:3001/#/register");
@@ -22,13 +22,13 @@ module.exports = Router()
     passport.authenticate("local", {
       failureRedirect: "http://localhost:3001/#/",
     }),
-    (req, res) => res.redirect("http://localhost:3001/#/register")
+    (req, res) => res.redirect("http://localhost:3001/#/dashboard")
   )
   .get("/login/google", passport.authenticate("google"))
   .get(
     "/login/google/redirect",
     passport.authenticate("google", {
-      successRedirect: "http://localhost:3001/#/register",
+      successRedirect: "http://localhost:3001/#/dashboard",
       failureRedirect: "http://localhost:3001/#/",
     })
   )
