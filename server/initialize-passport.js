@@ -1,17 +1,28 @@
 const passport = require("passport");
 const session = require("express-session");
 const JsonStore = require("express-session-json")(session);
+const bcrypt = require("bcrypt");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
+const User = require("./db/models/user.js");
 const data = require("./dummyUsers.json");
 
 const initialize = () => {
   passport.use(
-    new LocalStrategy((username, password, done) => {
-      const user = data.users.find((user) => {
-        return user.username === username && user.password === password;
-      });
-      user === undefined ? done(null, false, user) : done(null, user);
+    new LocalStrategy(async (username, password, done) => {
+      try {
+        let user = await User.findOne({ username: username });
+        if (user) {
+          const match = await bcrypt.compareSync(password, user.password);
+          if (match) {
+            return done(null, user);
+          }
+          return done(null, false);
+        }
+        return done(null, false);
+      } catch (err) {
+        return done(err, false);
+      }
     })
   );
   passport.use(
@@ -22,11 +33,15 @@ const initialize = () => {
         callbackURL: "http://localhost:3000/api/auth/login/google/redirect",
         scope: ["https://www.googleapis.com/auth/userinfo.email"],
       },
-      (token, secretToken, profile, done) => {
-        const user = data.users.find(
-          (user) => user.email === profile.emails[0].value
-        );
-        user === undefined ? done(null, false, user) : done(null, user);
+      async (token, secretToken, profile, done) => {
+        try {
+          let user = await User.findOne({ email: profile.emails[0].value });
+          if (user) {
+            return done(null, user);
+          }
+        } catch (err) {
+          return done(err, false);
+        }
       }
     )
   );
