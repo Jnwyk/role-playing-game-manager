@@ -6,7 +6,7 @@ import RedirectText from "../redirect-text/RedirectText";
 import GoogleButton from "react-google-button";
 import FormCard from "../form-card/FormCard.jsx";
 
-const RegisterForm = () => {
+const RegisterForm = ({ registerUser }) => {
   const [userForm, setUserForm] = useState({
     username: "",
     email: "",
@@ -21,6 +21,10 @@ const RegisterForm = () => {
   const handleSetSignIn = () => {
     if (signIn === "traditional") setSignIn("google");
     else setSignIn("traditional");
+  };
+
+  const submitForm = () => {
+    registerUser(userForm);
   };
 
   if (signIn === "google")
@@ -53,7 +57,9 @@ const RegisterForm = () => {
           id="password"
           onChange={(value) => handleSetRegisterForm("password", value)}
         />
-        <Button type="submit ">Register</Button>
+        <Button type="submit" onClick={submitForm}>
+          Register
+        </Button>
         <RedirectText loginType={signIn} onClick={handleSetSignIn} />
       </FormCard>
     );

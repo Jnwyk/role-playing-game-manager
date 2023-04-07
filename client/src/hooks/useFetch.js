@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function useFetch(url, method, body) {
+export default function useFetch(url, method, body, redirectUrl) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -17,7 +17,7 @@ export default function useFetch(url, method, body) {
       setLoading(false);
       setData(response.data);
       if (body) {
-        window.location.href = "http://localhost/#/dashboard";
+        window.location.href = redirectUrl;
       }
     } catch (err) {
       setLoading(false);

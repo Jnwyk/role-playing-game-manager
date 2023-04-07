@@ -12,10 +12,11 @@ const Login = () => {
   const [{ data, loading, error }, fetchData] = useFetch(
     "http://localhost:3000/api/auth/login/traditional",
     "post",
-    loginUser
+    loginUser,
+    "http://localhost:3001/#/dashboard"
   );
 
-  const handlesetLoginUser = (user) => setLoginUser(user);
+  const handleSetLoginUser = (user) => setLoginUser(user);
 
   return (
     <>
@@ -24,7 +25,7 @@ const Login = () => {
         <Button className="button-top-right">Register</Button>
       </Link>
       <div className="central-container">
-        <LoginForm loginUser={(user) => handlesetLoginUser(user)} />
+        <LoginForm loginUser={(user) => handleSetLoginUser(user)} />
       </div>
 
       <LoginFooter />
