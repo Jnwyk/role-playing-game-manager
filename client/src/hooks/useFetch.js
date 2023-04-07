@@ -6,24 +6,28 @@ export default function useFetch(url, method, body) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  useEffect(async () => {
+  const fetchData = async (test) => {
     setLoading(true);
-    const response = axios
-      .get({
+    try {
+      const response = await axios({
         method: method,
         url: url,
-        data: body,
-      })
-      .then((res) => {
-        setLoading(false);
-        setData(res.content);
-      })
-      .catch((err) => {
-        setLoading(false);
-        setError(true);
+        data: test,
       });
-    return () => response.cancel();
-  }, [url]);
+      setLoading(false);
+      setData(response.data);
+      if (body) {
+        window.location.href = "http://localhost/#/dashboard";
+      }
+    } catch (err) {
+      setLoading(false);
+      setError(true);
+    }
+  };
 
-  return [data, loading, error];
+  useEffect(() => {
+    fetchData(body);
+  }, [url, method, body]);
+
+  return [{ data, loading, error }, fetchData];
 }

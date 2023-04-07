@@ -3,8 +3,20 @@ import LoginForm from "../components/login-form/LoginForm";
 import LoginFooter from "../components/login-footer/LoginFooter";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import useFetch from "../hooks/useFetch";
+import { useEffect, useState } from "react";
 
 const Login = () => {
+  const [loginUser, setLoginUser] = useState(null);
+
+  const [{ data, loading, error }, fetchData] = useFetch(
+    "http://localhost:3000/api/auth/login/traditional",
+    "post",
+    loginUser
+  );
+
+  const handlesetLoginUser = (user) => setLoginUser(user);
+
   return (
     <>
       <div className="background" />
@@ -12,7 +24,7 @@ const Login = () => {
         <Button className="button-top-right">Register</Button>
       </Link>
       <div className="central-container">
-        <LoginForm />
+        <LoginForm loginUser={(user) => handlesetLoginUser(user)} />
       </div>
 
       <LoginFooter />

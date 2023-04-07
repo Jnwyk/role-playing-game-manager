@@ -28,7 +28,9 @@ const RegisterForm = () => {
       <FormCard>
         <GoogleButton
           className="login-form__google-button"
-          onClick={() => console.log("Logged in with Google")}
+          onClick={() =>
+            window.open("http://localhost:3000/api/auth/login/google", "_self")
+          }
         />
         <RedirectText loginType={signIn} onClick={handleSetSignIn} />
       </FormCard>
