@@ -29,7 +29,7 @@ const initialize = () => {
     new GoogleStrategy(
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.googleClientSecret,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: "http://localhost:3000/api/auth/login/google/redirect",
         scope: ["https://www.googleapis.com/auth/userinfo.email"],
       },
@@ -37,6 +37,13 @@ const initialize = () => {
         try {
           let user = await User.findOne({ email: profile.emails[0].value });
           if (user) {
+            return done(null, user);
+          } else {
+            user = new User({
+              username: profile.emails[0].value.split("@")[0],
+              email: profile.emails[0].value,
+            });
+            await user.save();
             return done(null, user);
           }
         } catch (err) {
