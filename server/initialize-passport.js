@@ -38,6 +38,13 @@ const initialize = () => {
           let user = await User.findOne({ email: profile.emails[0].value });
           if (user) {
             return done(null, user);
+          } else {
+            user = new User({
+              username: profile.emails[0].value.split("@")[0],
+              email: profile.emails[0].value,
+            });
+            await user.save();
+            return done(null, user);
           }
         } catch (err) {
           return done(err, false);
