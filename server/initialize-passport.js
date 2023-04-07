@@ -29,7 +29,7 @@ const initialize = () => {
     new GoogleStrategy(
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.googleClientSecret,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: "http://localhost:3000/api/auth/login/google/redirect",
         scope: ["https://www.googleapis.com/auth/userinfo.email"],
       },

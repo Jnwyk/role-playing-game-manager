@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import Register from "./pages/register";
 import Login from "./pages/login";
+import Games from "./pages/games";
 import Tests from "./pages/tests";
 
 const App = () => (
@@ -11,6 +12,7 @@ const App = () => (
       <Routes>
         <Route path="/tests" element={<Tests />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Games />} />
         <Route path="/" element={<Login />} />
       </Routes>
     </HashRouter>
