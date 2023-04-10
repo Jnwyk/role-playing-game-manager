@@ -6,14 +6,19 @@ const validateEmail = (email) => {
   return re.test(email);
 };
 
-const userSchema = new Schema({
-  username: { type: String, required: [true, "Username is required"] },
-  email: {
-    type: String,
-    required: [true, "Email is required"],
-    validate: [validateEmail, "Wrong email address"],
+const userSchema = new Schema(
+  {
+    username: { type: String, required: [true, "Username is required"] },
+    email: {
+      type: String,
+      required: [true, "Email is required"],
+      validate: [validateEmail, "Wrong email address"],
+    },
+    password: String,
   },
-  password: String,
-});
+  {
+    timestamps: true,
+  }
+);
 
 module.exports = mongoose.model("User", userSchema);
