@@ -4,6 +4,7 @@ import LoginForm from "../components/login-form/LoginForm";
 import TextInput from "../components/text-input/TextInput";
 import LoginFooter from "../components/login-footer/LoginFooter";
 import UserCard from "../components/user-card/UserCard";
+import Navbar from "../components/navbar/Navbar";
 
 const Tests = () => {
   return (
@@ -22,6 +23,9 @@ const Tests = () => {
         username="Jnwyk"
         photo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Calico_tabby_cat_-_Savannah.jpg/1200px-Calico_tabby_cat_-_Savannah.jpg"
       />
+      <br />
+      <h2>&lt;Test /&gt;</h2>
+      <Navbar />
       <br />
       <div>
         <h2>&lt;Login Footer /&gt;</h2>
