@@ -1,12 +1,15 @@
 import NavItem from "../nav-item/NavItem";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ currentPage }) => {
   return (
     <div className="navbar">
-      <NavItem name="profile" active={false} />
-      <NavItem name="music" active={false} />
-      <NavItem name="lights" active={true} />
+      <NavItem
+        name="profile"
+        active={currentPage === "profile" ? true : false}
+      />
+      <NavItem name="music" active={currentPage === "music" ? true : false} />
+      <NavItem name="lights" active={currentPage === "light" ? true : false} />
     </div>
   );
 };
