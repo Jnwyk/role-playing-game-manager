@@ -1,10 +1,14 @@
 import "./styles.css";
 import UserCard from "../components/user-card/UserCard";
 import Navbar from "../components/navbar/Navbar";
+import { useContext } from "react";
+import { LoggedUserContext } from "..";
 
 const Games = () => {
+  const loggedUser = useContext(LoggedUserContext);
   return (
     <div className="games">
+      {console.log(loggedUser)}
       <header className="games__header">
         <UserCard
           username="Jnwyk"

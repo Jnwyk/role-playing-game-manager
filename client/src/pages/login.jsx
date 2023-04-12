@@ -10,10 +10,10 @@ const Login = () => {
   const [loginUser, setLoginUser] = useState(null);
 
   const [{ data, loading, error }, fetchData] = useFetch(
-    "http://localhost:3000/api/auth/login/traditional",
+    "http://localhost:3420/api/auth/login/traditional",
     "post",
     loginUser,
-    "http://localhost:3001/#/games"
+    "http://localhost:3000/#/games"
   );
 
   const handleSetLoginUser = (user) => setLoginUser(user);
