@@ -53,6 +53,7 @@
 }
 
 .games__nav_background{
+  display: flex;
   position: absolute;
   top: 108px;
   height: 64px;
@@ -67,13 +68,4 @@
   align-items: center;
   width: 1080px;
   min-height: 100%;
-}
-
-.games__nav{
-  display: flex;
-  justify-content: center;
-}
-
-.games__nav{
-  height: 64px;
 }

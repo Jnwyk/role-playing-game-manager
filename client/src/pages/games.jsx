@@ -12,11 +12,8 @@ const Games = () => {
         />
       </header>
       <div className="games__nav_background"></div>
-      <div className="games__content">
-        <nav className="games__nav">
-          <Navbar currentPage="games" />
-        </nav>
-      </div>
+      <Navbar currentPage="games" />
+      <main className="games__content"></main>
     </div>
   );
 };

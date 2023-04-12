@@ -3,7 +3,7 @@ import "./Navbar.css";
 
 const Navbar = ({ currentPage }) => {
   return (
-    <div className="navbar">
+    <nav className="navbar">
       <NavItem name="games" active={currentPage === "games" ? true : false} />
       <NavItem
         name="profile"
@@ -11,7 +11,7 @@ const Navbar = ({ currentPage }) => {
       />
       <NavItem name="music" active={currentPage === "music" ? true : false} />
       <NavItem name="lights" active={currentPage === "light" ? true : false} />
-    </div>
+    </nav>
   );
 };
 
