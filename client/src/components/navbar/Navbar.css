@@ -7,3 +7,15 @@
   height: 64px;
   flex-direction: row;
 }
+
+.navbar__link{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 64px;
+  color: #FFFF;
+  cursor: pointer;
+  text-decoration: none;
+}
