@@ -1,0 +1,23 @@
+.user-card{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #0F1612;
+  width: 296px;
+  height: 72px;
+  border-radius: 5px;
+}
+
+.user-card__username{
+  color: #FFFF;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.user-card__photo{
+  height: 58px;
+  width: 58px;
+  border-radius: 50%;
+  border: 3px solid #FCDDB0;
+}
