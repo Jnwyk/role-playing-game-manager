@@ -1,0 +1,16 @@
+.nav-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px;
+}
+
+.active{
+  background-color: #93a69a;
+}
+
+.nav-item__name{
+  font-size: 18px;
+  text-transform: capitalize;
+  margin-left: 8px;
+}
