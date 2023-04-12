@@ -13,7 +13,7 @@ const Login = () => {
     "http://localhost:3000/api/auth/login/traditional",
     "post",
     loginUser,
-    "http://localhost:3001/#/dashboard"
+    "http://localhost:3001/#/games"
   );
 
   const handleSetLoginUser = (user) => setLoginUser(user);

@@ -33,3 +33,38 @@
   75% { background-position: 50% 75%;}
   100% { background-position: 0 0;}
 }
+
+
+/* GAMES PAGE */
+
+.games{
+  background-color: #EFE3D7;
+  min-height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.games__header{
+  height: 108px;
+  background-color: #3E5948;
+}
+
+.games__nav_background{
+  position: absolute;
+  top: 108px;
+  height: 64px;
+  width: 100%;
+  background-color: #4C6C58;
+  z-index: -1;;
+}
+
+.games__content{
+  width: 1080px;
+  min-height: 100%;
+}
+
+.games__nav{
+  height: 64px;
+}

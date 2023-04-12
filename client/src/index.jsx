@@ -12,7 +12,7 @@ const App = () => (
       <Routes>
         <Route path="/tests" element={<Tests />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Games />} />
+        <Route path="/games" element={<Games />} />
         <Route path="/" element={<Login />} />
       </Routes>
     </HashRouter>
