@@ -1,4 +1,7 @@
 .user-card{
+  position: absolute;
+  top: 20px;
+  right: 274px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

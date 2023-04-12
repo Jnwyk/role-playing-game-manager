@@ -22,13 +22,13 @@ module.exports = Router()
     passport.authenticate("local", {
       failureRedirect: "http://localhost:3001/#/",
     }),
-    (req, res) => res.redirect("http://localhost:3001/#/dashboard")
+    (req, res) => res.redirect("http://localhost:3001/#/games")
   )
   .get("/login/google", passport.authenticate("google"))
   .get(
     "/login/google/redirect",
     passport.authenticate("google", {
-      successRedirect: "http://localhost:3001/#/dashboard",
+      successRedirect: "http://localhost:3001/#/games",
       failureRedirect: "http://localhost:3001/#/",
     })
   )
