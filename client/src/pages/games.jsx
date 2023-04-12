@@ -14,7 +14,7 @@ const Games = () => {
       <div className="games__nav_background"></div>
       <div className="games__content">
         <nav className="games__nav">
-          <Navbar />
+          <Navbar currentPage="games" />
         </nav>
       </div>
     </div>

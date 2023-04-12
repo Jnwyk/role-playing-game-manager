@@ -62,8 +62,16 @@
 }
 
 .games__content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 1080px;
   min-height: 100%;
+}
+
+.games__nav{
+  display: flex;
+  justify-content: center;
 }
 
 .games__nav{
