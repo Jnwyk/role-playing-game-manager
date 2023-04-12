@@ -47,6 +47,7 @@
 }
 
 .games__header{
+  position: relative;
   height: 108px;
   background-color: #3E5948;
 }
