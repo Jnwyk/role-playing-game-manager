@@ -4,17 +4,19 @@ import "./GameCard.css";
 const GameCard = ({ game }) => {
   return (
     <div className="game-card">
-      <img
-        src="https://www.cdprojekt.com/en/wp-content/uploads-en/2022/03/16-9-en-1024x576.png"
-        alt="Game picture"
-        className="game-card__picture"
-      />
+      <div className="game-card__picture-wrap">
+        <img
+          src="https://www.cdprojekt.com/en/wp-content/uploads-en/2022/03/16-9-en-1024x576.png"
+          alt="Game picture"
+          className="game-card__picture"
+        />
+      </div>
       <div className="game-card__info">
         <h2 className="game-card__title">Title of the game</h2>
-        <div>
-          <NavItem name="The Witcher" logo="genre"/>
-          <NavItem name="Jnwyk" logo="master"/>
-          <NavItem name="4" logo="players"/>
+        <div className="game-card__game-info">
+          <NavItem name="The Witcher" logo="genre" />
+          <NavItem name="Jnwyk" logo="master" />
+          <NavItem name="4" logo="players" />
         </div>
         <p className="game-card__description">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
