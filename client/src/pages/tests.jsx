@@ -5,6 +5,7 @@ import TextInput from "../components/text-input/TextInput";
 import LoginFooter from "../components/login-footer/LoginFooter";
 import UserCard from "../components/user-card/UserCard";
 import Navbar from "../components/navbar/Navbar";
+import GameCard from "../components/game-card/GameCard";
 
 const Tests = () => {
   return (
@@ -27,10 +28,11 @@ const Tests = () => {
       <h2>&lt;Test /&gt;</h2>
       <Navbar />
       <br />
-      <div>
-        <h2>&lt;Login Footer /&gt;</h2>
-        <LoginFooter />
-      </div>
+      <h2>&lt;Login Footer /&gt;</h2>
+      <LoginFooter />
+      <br />
+      <h2>&lt;GameCard /&gt;</h2>
+      <GameCard />
     </main>
   );
 };

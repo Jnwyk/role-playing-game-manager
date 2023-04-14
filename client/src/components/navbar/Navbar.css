@@ -1,9 +1,8 @@
 .navbar{
   position:relative;
-  left: 420px;
   display: flex;
-  justify-content: start;
-  width: 1080px;
+  justify-content: center;
+  width: 55vw;
   height: 64px;
   flex-direction: row;
 }
