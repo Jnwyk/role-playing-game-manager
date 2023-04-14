@@ -34,11 +34,12 @@ async function main() {
     withCredntials: true,
     credentials: "include",
   }).then((res) => res.json());
+  console.log(userInfo);
   const root = document.createElement("div");
   const body = document.querySelector("body");
   body.appendChild(root);
   ReactDOM.createRoot(root).render(
-    <LoggedUserContext.Provider value={userInfo.data}>
+    <LoggedUserContext.Provider value={userInfo.user}>
       <App />
     </LoggedUserContext.Provider>
   );
