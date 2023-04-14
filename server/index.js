@@ -4,14 +4,14 @@ const cors = require("cors");
 const initPassport = require("./initialize-passport.js");
 const connectDb = require("./db/connection.js");
 const routes = require("./routes/");
+const cookieParser = require("cookie-parser");
 
 app = express();
-
+connectDb();
+app.use(cookieParser());
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(initPassport());
-app.use(cors());
-
-connectDb();
 
 app.use("/api", routes);
 app.get("*", (req, res) => res.status(404).json({ msg: "Page not found" }));

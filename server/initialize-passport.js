@@ -1,6 +1,5 @@
 const passport = require("passport");
 const session = require("express-session");
-const JsonStore = require("express-session-json")(session);
 const bcrypt = require("bcrypt");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
@@ -30,7 +29,7 @@ const initialize = () => {
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/api/auth/login/google/redirect",
+        callbackURL: "http://localhost:3080/api/auth/login/google/redirect",
         scope: ["https://www.googleapis.com/auth/userinfo.email"],
       },
       async (token, secretToken, profile, done) => {
@@ -54,11 +53,11 @@ const initialize = () => {
   );
 
   passport.serializeUser((user, done) => {
-    done(null, user);
+    return done(null, user);
   });
 
   passport.deserializeUser((user, done) => {
-    done(null, user);
+    return done(null, user);
   });
 
   const cookieSession = session({
@@ -66,8 +65,10 @@ const initialize = () => {
     name: "session",
     resave: false,
     saveUninitialized: true,
-    store: new JsonStore(),
-    cookie: {},
+    cookie: {
+      sameSite: "lax",
+      secure: "auto",
+    },
   });
 
   const authMiddleware = passport.initialize();

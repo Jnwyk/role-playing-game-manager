@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { createContext } from "react";
+import axios from "axios";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import Register from "./pages/register";
 import Login from "./pages/login";
@@ -8,6 +10,8 @@ import Tests from "./pages/tests";
 import Music from "./pages/music";
 import Lights from "./pages/lights";
 import Profile from "./pages/profile";
+
+export const LoggedUserContext = createContext();
 
 const App = () => (
   <React.StrictMode>
@@ -26,10 +30,18 @@ const App = () => (
 );
 
 async function main() {
+  const userInfo = await fetch("http://localhost:3080/api/user/logged", {
+    withCredntials: true,
+    credentials: "include",
+  }).then((res) => res.json());
   const root = document.createElement("div");
   const body = document.querySelector("body");
   body.appendChild(root);
-  ReactDOM.createRoot(root).render(<App />);
+  ReactDOM.createRoot(root).render(
+    <LoggedUserContext.Provider value={userInfo.data}>
+      <App />
+    </LoggedUserContext.Provider>
+  );
 }
 
 main();
