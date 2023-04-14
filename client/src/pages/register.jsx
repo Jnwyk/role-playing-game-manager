@@ -10,7 +10,7 @@ const Register = () => {
   const [registeredUser, setRegisteredUser] = useState(null);
 
   const [{ data, loading, error }, fetchData] = useFetch(
-    "http://localhost:3420/api/auth/signup/traditional",
+    "http://localhost:3080/api/auth/signup/traditional",
     "post",
     registeredUser,
     "http://localhost:3000/#/"
@@ -28,7 +28,6 @@ const Register = () => {
         <RegisterForm registerUser={(user) => handleSetRegisterUser(user)} />
       </div>
       <LoginFooter />
-      {console.log(registeredUser)}
     </>
   );
 };

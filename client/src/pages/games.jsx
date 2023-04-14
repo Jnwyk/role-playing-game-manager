@@ -8,7 +8,6 @@ const Games = () => {
   const loggedUser = useContext(LoggedUserContext);
   return (
     <div className="games">
-      {console.log(loggedUser)}
       <header className="games__header">
         <UserCard
           username="Jnwyk"

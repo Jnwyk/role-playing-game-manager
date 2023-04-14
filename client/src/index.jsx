@@ -30,7 +30,10 @@ const App = () => (
 );
 
 async function main() {
-  const userInfo = await axios.get("http://localhost:3420/api/user/logged");
+  const userInfo = await fetch("http://localhost:3080/api/user/logged", {
+    withCredntials: true,
+    credentials: "include",
+  }).then((res) => res.json());
   const root = document.createElement("div");
   const body = document.querySelector("body");
   body.appendChild(root);

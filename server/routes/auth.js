@@ -12,29 +12,31 @@ module.exports = Router()
         password: await bcrypt.hash(req.body.password, 10),
       });
       await user.save();
-      return res.redirect(201, "http://localhost:3001/#/register");
+      return res.redirect(201, "http://localhost:3000/#/register");
     } catch (err) {
-      return res.redirect("http://localhost:3001/#/");
+      return res.redirect("http://localhost:3000/#/");
     }
   })
   .post(
     "/login/traditional",
     passport.authenticate("local", {
-      failureRedirect: "http://localhost:3001/#/",
+      failureRedirect: "http://localhost:3000/#/",
     }),
-    (req, res) => res.redirect("http://localhost:3001/#/games")
+    (req, res, next) => {
+      res.redirect("http://localhost:3000/#/");
+    }
   )
   .get("/login/google", passport.authenticate("google"))
   .get(
     "/login/google/redirect",
     passport.authenticate("google", {
-      successRedirect: "http://localhost:3001/#/games",
-      failureRedirect: "http://localhost:3001/#/",
+      successRedirect: "http://localhost:3000/#/games",
+      failureRedirect: "http://localhost:3000/#/",
     })
   )
   .get("/logout", (req, res, next) => {
     req.logout((err) => {
       if (err) return next(err);
     });
-    return res.redirect("http://localhost:3001/#/");
+    return res.redirect("http://localhost:3000/#/");
   });
