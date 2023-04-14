@@ -3,10 +3,13 @@ import { ReactComponent as MusicLogo } from "./assets/music-notes-svgrepo-com.sv
 import { ReactComponent as BulbLogo } from "./assets/bulb-svgrepo-com.svg";
 import { ReactComponent as ProfileLogo } from "./assets/profile-circle-svgrepo-com.svg";
 import { ReactComponent as GameLogo } from "./assets/adventure-svgrepo-com.svg";
+import { ReactComponent as GenreLogo } from "./assets/world-svgrepo-com.svg";
+import { ReactComponent as MasterLogo } from "./assets/crown-svgrepo-com.svg";
+import { ReactComponent as PlayersLogo } from "./assets/team-fill-svgrepo-com.svg";
 
-const NavItem = ({ name, active }) => {
+const NavItem = ({ name, logo, active }) => {
   const pickLogo = () => {
-    switch (name) {
+    switch (logo) {
       case "music":
         return <MusicLogo />;
       case "lights":
@@ -15,6 +18,12 @@ const NavItem = ({ name, active }) => {
         return <ProfileLogo />;
       case "games":
         return <GameLogo />;
+      case "genre":
+        return <GenreLogo />;
+      case "master":
+        return <MasterLogo />;
+      case "players":
+        return <PlayersLogo />;
       default:
         return null;
     }

@@ -1,0 +1,45 @@
+.game-card{
+  position: relative;
+  width: 55vw;
+  height: 240px;
+  background-color: #FCDDB0;
+  z-index: -3;
+  display: flex;
+  align-items: center;
+}
+
+.game-card__picture{
+  position:relative;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 2px solid #563232;
+  z-index: -2;
+}
+
+.game-card__picture-wrap {
+  box-shadow: inset 0px 0px 30px 0 #000000;
+  width: 200px;
+  height: 200px;
+  margin: 0 32px;
+}
+
+.game-card__info{
+  margin: 16px 32px 16px 16px;
+}
+
+.game-card__title{
+  font-size: 28px;
+  border-bottom: 2px solid rgb(0,0,0);
+}
+
+.game-card__game-info{
+  display: flex;
+}
+
+.game-card__description{
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-clamp: 2;
+}
