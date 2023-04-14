@@ -15,6 +15,11 @@ const userSchema = new Schema(
       validate: [validateEmail, "Wrong email address"],
     },
     password: String,
+    picture: {
+      type: String,
+      default:
+        "https://ed-spaces.com/wp-content/uploads/2020/10/default-avatar-profile-icon-vector-18942381.jpg",
+    },
   },
   {
     timestamps: true,
