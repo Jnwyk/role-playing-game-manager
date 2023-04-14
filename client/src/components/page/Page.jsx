@@ -1,0 +1,25 @@
+import { useContext } from "react";
+import "./Page.css";
+import { LoggedUserContext } from "../..";
+import UserCard from "../user-card/UserCard";
+import Navbar from "../navbar/Navbar";
+
+const Page = ({ children }) => {
+  const userInfo = useContext(LoggedUserContext);
+
+  return (
+    <div className="page">
+      <header className="page__header">
+        <UserCard
+          username={userInfo.user.username}
+          photo={userInfo.user.picture}
+        />
+      </header>
+      <div className="page__nav_background"></div>
+      <Navbar currentPage="page" />
+      <main className="page__content">{children}</main>
+    </div>
+  );
+};
+
+export default Page;
