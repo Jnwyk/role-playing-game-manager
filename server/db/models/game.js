@@ -11,8 +11,8 @@ const gameSchema = new Schema(
       type: Number,
       default: 0,
     },
-    master: mongoose.ObjectId,
-    players: [mongoose.ObjectId],
+    master: { type: mongoose.ObjectId, ref: "User" },
+    players: [{ type: mongoose.ObjectId, ref: "User" }],
   },
   {
     timestamps: true,
