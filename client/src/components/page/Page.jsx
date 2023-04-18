@@ -16,8 +16,10 @@ const Page = ({ children }) => {
         />
       </header>
       <div className="page__nav_background"></div>
-      <Navbar currentPage="page" />
-      <main className="page__content">{children}</main>
+      <div className="page__center-container">
+        <Navbar currentPage="page" />
+        <main className="page__content">{children}</main>
+      </div>
     </div>
   );
 };
