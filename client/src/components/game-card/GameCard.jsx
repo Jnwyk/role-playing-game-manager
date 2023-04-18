@@ -16,18 +16,13 @@ const GameCard = ({ game }) => {
         <h2 className="game-card__title">{game.name}</h2>
         <div className="game-card__game-info">
           <NavItem name={game.genre} logo="genre" />
-          <NavItem name={game.master} logo="master" />
+          <NavItem
+            name={game.master ? game.master.username : "temp"}
+            logo="master"
+          />
           <NavItem name={game.players.length} logo="players" />
         </div>
-        <p className="game-card__description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <p className="game-card__description">{game.description}</p>
       </div>
     </div>
   );
