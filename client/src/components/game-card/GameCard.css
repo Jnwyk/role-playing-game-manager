@@ -39,6 +39,7 @@
 
 .game-card__game-info{
   display: flex;
+  margin: 8px 0;
 }
 
 .game-card__description{
