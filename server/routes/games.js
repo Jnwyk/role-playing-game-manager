@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const Games = require("../db/models/game.js");
 const Users = require("../db/models/user.js");
+const mongoose = require("mongoose");
 
 const create = async (req, res) => {
   try {
@@ -9,11 +10,13 @@ const create = async (req, res) => {
     const game = await Games.create({
       ...req.body,
       master: master._id,
-      players: [...players._id],
+      players: [...players],
     });
     res.status(201).json({ msg: "Game created", game: game });
   } catch (err) {
-    res.status(500).json({ err: "Internal server error" || err });
+    if (err instanceof mongoose.Error.ValidationError)
+      return res.status(400).json({ err: err });
+    return res.status(500).json({ err: "Inernal server error" || err });
   }
 };
 
