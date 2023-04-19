@@ -21,7 +21,9 @@ const GameCard = ({ game }) => {
           />
           <LogoAndText iconName="BsPeopleFill" text={game.players.length} />
         </div>
-        <p className="game-card__description">{game.description}</p>
+        <p className="game-card__description">
+          {game.description ? game.description : "No description provided"}
+        </p>
       </div>
     </div>
   );
