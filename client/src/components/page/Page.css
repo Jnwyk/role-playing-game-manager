@@ -2,7 +2,7 @@
   background-color: #EFE3D7;
   min-height: 100%;
   width: 100%;
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
 }
@@ -20,7 +20,6 @@
   height: 64px;
   width: 100%;
   background-color: #4C6C58;
-  z-index: -1;;
 }
 
 .page__content{

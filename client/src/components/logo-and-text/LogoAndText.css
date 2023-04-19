@@ -1,0 +1,5 @@
+.logo-and-text{
+  display: flex;
+  gap: 4px;
+  margin: 8px;
+}
