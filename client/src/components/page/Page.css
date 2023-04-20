@@ -24,9 +24,6 @@
 
 .page__content{
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 55vw;
   min-height: 100%;
 }
