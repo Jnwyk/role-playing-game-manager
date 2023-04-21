@@ -8,6 +8,7 @@ const Games = () => {
   const searchOptions = ["creation date", "name", "players", "sessions played"];
 
   const [games, setGames] = useState([]);
+  const [animation, setAnimation] = useState("fade-in");
 
   useEffect(() => {
     fetchData();
@@ -19,18 +20,21 @@ const Games = () => {
   };
 
   const sortGames = (option) => {
-    switch (option) {
-      case searchOptions[0]:
-        return sortByCreationDate();
-      case searchOptions[1]:
-        return sortByName();
-      case searchOptions[2]:
-        return sortByPlayers();
-      case searchOptions[3]:
-        return sortBySessionsPlayed();
-      default:
-        return sortByCreationDate();
-    }
+    setAnimation("fade-out");
+    setTimeout(() => {
+      switch (option) {
+        case searchOptions[0]:
+          return sortByCreationDate();
+        case searchOptions[1]:
+          return sortByName();
+        case searchOptions[2]:
+          return sortByPlayers();
+        case searchOptions[3]:
+          return sortBySessionsPlayed();
+        default:
+          return sortByCreationDate();
+      }
+    }, 240);
   };
 
   const sortByCreationDate = () => {
@@ -39,12 +43,14 @@ const Games = () => {
         (gameA, gameB) => new Date(gameA.createdAt) - new Date(gameB.createdAt)
       ),
     ]);
+    setAnimation("fade-in");
   };
 
   const sortByName = () => {
     setGames([
       ...games.sort((gameA, gameB) => gameA.name.localeCompare(gameB.name)),
     ]);
+    setAnimation("fade-in");
   };
 
   const sortByPlayers = () => {
@@ -53,6 +59,7 @@ const Games = () => {
         (gameA, gameB) => gameA.players.length - gameB.players.length
       ),
     ]);
+    setAnimation("fade-in");
   };
 
   const sortBySessionsPlayed = () => {
@@ -61,6 +68,7 @@ const Games = () => {
         (gameA, gameB) => gameA.sessions_played - gameB.sessions_played
       ),
     ]);
+    setAnimation("fade-in");
   };
 
   return (
@@ -69,7 +77,7 @@ const Games = () => {
         searchOptions={searchOptions}
         onChange={(option) => sortGames(option)}
       />
-      <GameList games={games} />
+      <GameList games={games} animation={animation} />
     </Page>
   );
 };

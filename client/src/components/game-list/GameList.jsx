@@ -1,9 +1,9 @@
 import GameCard from "../game-card/GameCard";
 import "./GameList.css";
 
-const GameList = ({ games }) => {
+const GameList = ({ games, animation }) => {
   return (
-    <div className="game-list">
+    <div className={`game-list ${animation}`}>
       {games.map((game) => (
         <GameCard key={game._id} game={game} />
       ))}
