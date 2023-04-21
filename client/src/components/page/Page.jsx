@@ -4,7 +4,7 @@ import { LoggedUserContext } from "../..";
 import UserCard from "../user-card/UserCard";
 import Navbar from "../navbar/Navbar";
 
-const Page = ({ children }) => {
+const Page = ({ currentPage, children }) => {
   const userInfo = useContext(LoggedUserContext);
 
   return (
@@ -17,7 +17,7 @@ const Page = ({ children }) => {
       </header>
       <div className="page__nav_background"></div>
       <div className="page__center-container">
-        <Navbar currentPage="page" />
+        <Navbar currentPage={currentPage} />
         <main className="page__content">{children}</main>
       </div>
     </div>

@@ -3,15 +3,20 @@ import { useState, useEffect } from "react";
 import Page from "../components/page/Page.jsx";
 import GameList from "../components/game-list/GameList";
 import SortInput from "../components/sort-input/SortInput";
+import { useSearchParams } from "react-router-dom";
 
 const Games = () => {
   const searchOptions = ["creation date", "name", "players", "sessions played"];
 
   const [games, setGames] = useState([]);
   const [animation, setAnimation] = useState("fade-in");
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     fetchData();
+    setSearchParams({
+      sort: searchOptions[0],
+    });
   }, []);
 
   const fetchData = async () => {
@@ -24,17 +29,24 @@ const Games = () => {
     setTimeout(() => {
       switch (option) {
         case searchOptions[0]:
-          return sortByCreationDate();
+          sortByCreationDate();
+          break;
         case searchOptions[1]:
-          return sortByName();
+          sortByName();
+          break;
         case searchOptions[2]:
-          return sortByPlayers();
+          sortByPlayers();
+          break;
         case searchOptions[3]:
-          return sortBySessionsPlayed();
+          sortBySessionsPlayed();
+          break;
         default:
-          return sortByCreationDate();
+          sortByCreationDate();
+          break;
       }
+      setAnimation("fade-in");
     }, 240);
+    setSearchParams({ sort: option });
   };
 
   const sortByCreationDate = () => {
@@ -43,14 +55,12 @@ const Games = () => {
         (gameA, gameB) => new Date(gameA.createdAt) - new Date(gameB.createdAt)
       ),
     ]);
-    setAnimation("fade-in");
   };
 
   const sortByName = () => {
     setGames([
       ...games.sort((gameA, gameB) => gameA.name.localeCompare(gameB.name)),
     ]);
-    setAnimation("fade-in");
   };
 
   const sortByPlayers = () => {
@@ -59,7 +69,6 @@ const Games = () => {
         (gameA, gameB) => gameA.players.length - gameB.players.length
       ),
     ]);
-    setAnimation("fade-in");
   };
 
   const sortBySessionsPlayed = () => {
@@ -68,11 +77,10 @@ const Games = () => {
         (gameA, gameB) => gameA.sessions_played - gameB.sessions_played
       ),
     ]);
-    setAnimation("fade-in");
   };
 
   return (
-    <Page>
+    <Page currentPage="games">
       <SortInput
         searchOptions={searchOptions}
         onChange={(option) => sortGames(option)}
