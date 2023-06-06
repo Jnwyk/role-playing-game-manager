@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createContext } from "react";
 import axios from "axios";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "./pages/register";
 import Login from "./pages/login";
 import Games from "./pages/games";
@@ -14,26 +14,23 @@ import Profile from "./pages/profile";
 export const LoggedUserContext = createContext();
 
 const App = () => (
-  <React.StrictMode>
-    <HashRouter>
-      <Routes>
-        <Route path="/tests" element={<Tests />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/games" element={<Games />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/lights" element={<Lights />} />
-        <Route path="/music" element={<Music />} />
-        <Route path="/" element={<Login />} />
-      </Routes>
-    </HashRouter>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <BrowserRouter>
+    <Routes>
+      <Route path="/tests" element={<Tests />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/games" element={<Games />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/lights" element={<Lights />} />
+      <Route path="/music" element={<Music />} />
+      <Route path="/" element={<Login />} />
+    </Routes>
+  </BrowserRouter>
+  // </React.StrictMode>
 );
 
 async function main() {
-  const userInfo = await fetch("http://localhost:3080/api/user/logged", {
-    withCredntials: true,
-    credentials: "include",
-  }).then((res) => res.json());
+  const userInfo = await fetch("/api/user/logged").then((res) => res.json());
   console.log(userInfo);
   const root = document.createElement("div");
   const body = document.querySelector("body");

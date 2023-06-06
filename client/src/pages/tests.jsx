@@ -7,6 +7,7 @@ import UserCard from "../components/user-card/UserCard";
 import Navbar from "../components/navbar/Navbar";
 import GameCard from "../components/game-card/GameCard";
 import LogoAndText from "../components/logo-and-text/LogoAndText";
+import SpotifyLogin from "../components/spotify-login/SpotifyLogin";
 
 const Tests = () => {
   return (

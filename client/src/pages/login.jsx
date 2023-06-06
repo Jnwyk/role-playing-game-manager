@@ -19,7 +19,7 @@ const Login = () => {
     // );
     const data = await axios({
       method: "post",
-      url: "http://localhost:3080/api/auth/login/traditional",
+      url: "/api/auth/login/traditional",
       data: user,
     });
   };
