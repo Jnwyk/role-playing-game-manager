@@ -14,19 +14,19 @@ import Profile from "./pages/profile";
 export const LoggedUserContext = createContext();
 
 const App = () => (
-  // <React.StrictMode>
-  <BrowserRouter>
-    <Routes>
-      <Route path="/tests" element={<Tests />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/games" element={<Games />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/lights" element={<Lights />} />
-      <Route path="/music" element={<Music />} />
-      <Route path="/" element={<Login />} />
-    </Routes>
-  </BrowserRouter>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/tests" element={<Tests />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/games" element={<Games />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/lights" element={<Lights />} />
+        <Route path="/music" element={<Music />} />
+        <Route path="/" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
+  </React.StrictMode>
 );
 
 async function main() {

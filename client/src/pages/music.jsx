@@ -13,12 +13,19 @@ const Music = () => {
       .then((res) => (window.location.href = res.request.responseURL));
   };
 
+  const addToFavourites = async (song) => {
+    console.log(song);
+  };
+
   return (
     <Page>
       {!code ? (
         <SpotifyLogin onClick={handleSpotifyLogin} />
       ) : (
-        <SpotifyDashboard code={code} />
+        <SpotifyDashboard
+          code={code}
+          addToFavourites={(song) => addToFavourites(song)}
+        />
       )}
     </Page>
   );
