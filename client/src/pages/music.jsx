@@ -1,5 +1,7 @@
 import "./styles.css";
 import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import { LoggedUserContext } from "../";
 import Page from "../components/page/Page";
 import SpotifyLogin from "../components/spotify-login/SpotifyLogin";
 import SpotifyDashboard from "../components/spotify-dashboard/SpotifyDashborad";
@@ -7,6 +9,17 @@ import SpotifyDashboard from "../components/spotify-dashboard/SpotifyDashborad";
 const code = new URLSearchParams(window.location.search).get("code");
 
 const Music = () => {
+  const userInfo = useContext(LoggedUserContext);
+
+  const [favouriteSongs, setFavouriteSongs] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      await axios
+        .get("/api/spotify/favourites")
+        .then((res) => setFavouriteSongs([...res.data.songs]));
+    };
+    fetchData();
+  }, []);
   const handleSpotifyLogin = async () => {
     await axios
       .get("/api/spotify/login")
@@ -14,7 +27,10 @@ const Music = () => {
   };
 
   const addToFavourites = async (song) => {
-    console.log(song);
+    await axios.post("/api/spotify/favourites", {
+      ...song,
+      user: userInfo.user.username,
+    });
   };
 
   return (
@@ -25,6 +41,7 @@ const Music = () => {
         <SpotifyDashboard
           code={code}
           addToFavourites={(song) => addToFavourites(song)}
+          favouriteSongs={favouriteSongs}
         />
       )}
     </Page>

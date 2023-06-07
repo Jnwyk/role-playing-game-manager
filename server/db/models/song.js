@@ -10,7 +10,7 @@ const songSchema = new Schema(
     },
     title: { type: String, required: [true, "Song title required"] },
     artist: { type: String, required: [true, "Song artist required"] },
-    trackUri: { type: String, required: [true, "Song uri required"] },
+    uri: { type: String, required: [true, "Song uri required"] },
     albumUrl: { type: String, required: [true, "Album picture required"] },
   },
   {

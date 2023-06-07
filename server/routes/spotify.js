@@ -1,7 +1,9 @@
 const { Router } = require("express");
-const spotifyWebApi = require("spotify-web-api-node");
 const querystring = require("querystring");
 const SpotifyWebApi = require("spotify-web-api-node");
+const Users = require("../db/models/user.js");
+const Songs = require("../db/models/song.js");
+const mongoose = require("mongoose");
 
 const login = (req, res) => {
   const clientId = "58bb2cc230f84df699fcd6874f054666";
@@ -58,7 +60,34 @@ const refresh = (req, res) => {
     .catch((err) => res.status(400));
 };
 
+const create = async (req, res) => {
+  try {
+    console.log(req.body);
+    const user = await Users.findOne({ username: req.body.user });
+    const song = await Songs.create({
+      ...req.body,
+      user: user,
+    });
+    res.status(201).json({ msg: "Song added to favourites", song: song });
+  } catch (err) {
+    if (err instanceof mongoose.Error.ValidationError)
+      return res.status(400).json({ err: err });
+    return res.status(500).json({ err: "Inernal server error" || err });
+  }
+};
+
+const getAll = async (req, res) => {
+  try {
+    let songs = await Songs.find({});
+    res.status(200).json({ msg: "success", songs: songs });
+  } catch (err) {
+    return res.status(500).json({ err: "Inernal server error" || err });
+  }
+};
+
 module.exports = Router()
   .get("/login", login)
   .post("/login/access", access)
-  .post("/login/refresh", refresh);
+  .post("/login/refresh", refresh)
+  .post("/favourites", create)
+  .get("/favourites", getAll);
