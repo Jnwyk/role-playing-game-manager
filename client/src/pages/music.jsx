@@ -12,6 +12,7 @@ const Music = () => {
   const userInfo = useContext(LoggedUserContext);
 
   const [favouriteSongs, setFavouriteSongs] = useState([]);
+  const [favouritesChange, setFavouritesChange] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       await axios
@@ -19,7 +20,7 @@ const Music = () => {
         .then((res) => setFavouriteSongs([...res.data.songs]));
     };
     fetchData();
-  }, []);
+  }, [favouritesChange]);
   const handleSpotifyLogin = async () => {
     await axios
       .get("/api/spotify/login")
@@ -31,6 +32,12 @@ const Music = () => {
       ...song,
       user: userInfo.user.username,
     });
+    setFavouritesChange(!favouritesChange);
+  };
+
+  const removeSongFromFavourites = async (song) => {
+    await axios.delete(`/api/spotify/favourites/${song.title}`);
+    setFavouritesChange(!favouritesChange);
   };
 
   return (
@@ -42,6 +49,7 @@ const Music = () => {
           code={code}
           addToFavourites={(song) => addToFavourites(song)}
           favouriteSongs={favouriteSongs}
+          removeSong={(song) => removeSongFromFavourites(song)}
         />
       )}
     </Page>

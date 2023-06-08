@@ -1,12 +1,24 @@
+import SongResult from "../song-result/SongResult";
 import "./FavouriteSongs.css";
 
-const FavouriteSongs = (songs) => {
+const FavouriteSongs = ({ songs, pickSong, removeSong }) => {
+  const handleRemoveSong = (song) => removeSong(song);
   return (
     <div>
-      {console.log(songs)}
-      {songs.songs.map((song) => (
-        <p>{song.title}</p>
-      ))}
+      {songs.map((song) => {
+        return (
+          <div>
+            <SongResult
+              songData={song}
+              pickSong={(track) => pickSong(track)}
+              key={song.uri}
+            />
+            <button onClick={() => handleRemoveSong(song)}>
+              Remove from favourites
+            </button>
+          </div>
+        );
+      })}
     </div>
   );
 };

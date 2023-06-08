@@ -85,9 +85,20 @@ const getAll = async (req, res) => {
   }
 };
 
+const remove = async (req, res) => {
+  try {
+    let song = await Songs.findOneAndDelete({ title: req.params.title });
+    console.log(song);
+    res.status(200).json({ msg: "Success", song: song });
+  } catch (err) {
+    return res.status(500).json({ err: "Inernal server error" || err });
+  }
+};
+
 module.exports = Router()
   .get("/login", login)
   .post("/login/access", access)
   .post("/login/refresh", refresh)
   .post("/favourites", create)
-  .get("/favourites", getAll);
+  .get("/favourites", getAll)
+  .delete("/favourites/:title", remove);
