@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("./db/models/user.js");
-const data = require("./dummyUsers.json");
 
 const initialize = () => {
   passport.use(

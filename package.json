@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Jnwyk/role-playing-game-manager/issues"
   },
-  "homepage": "https://github.com/Jnwyk/role-playing-game-manager#readme"
+  "homepage": "https://github.com/Jnwyk/role-playing-game-manager#readme",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
 }

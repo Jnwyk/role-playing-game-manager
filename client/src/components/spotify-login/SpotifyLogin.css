@@ -1,0 +1,13 @@
+.spotify-button{
+  background-color: #1db954;
+  color: #FFFF;
+  width: 260px;
+  height: auto;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 15px;
+}
+
+.spotify-button:hover{
+  background-color: #191414;
+}
