@@ -8,7 +8,7 @@ const SongResults = ({ results, pickSong }) => {
         <SongResult
           songData={song}
           pickSong={(track) => pickSong(track)}
-          key={song.uri}
+          key={`res-${song.uri}`}
         />
       ))}
     </div>

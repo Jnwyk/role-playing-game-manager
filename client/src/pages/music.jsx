@@ -27,7 +27,10 @@ const Music = () => {
       .then((res) => (window.location.href = res.request.responseURL));
   };
 
-  const addToFavourites = async (song) => {
+  const addSongToFavourites = async (song) => {
+    if (!song) return;
+    const favouriteUris = favouriteSongs.map((song) => song.uri);
+    if (favouriteUris.includes(song.uri)) return;
     await axios.post("/api/spotify/favourites", {
       ...song,
       user: userInfo.user.username,
@@ -47,8 +50,8 @@ const Music = () => {
       ) : (
         <SpotifyDashboard
           code={code}
-          addToFavourites={(song) => addToFavourites(song)}
           favouriteSongs={favouriteSongs}
+          addToFavourites={(song) => addSongToFavourites(song)}
           removeSong={(song) => removeSongFromFavourites(song)}
         />
       )}

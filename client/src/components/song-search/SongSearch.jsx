@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./SongSearch.css";
-import SongResults from "../SongResults/SongResults";
+import SongResults from "../song-results/SongResults";
 
 const SongSearch = ({ accessToken, spotifyApi, pickSong }) => {
   const [search, setSearch] = useState("");
