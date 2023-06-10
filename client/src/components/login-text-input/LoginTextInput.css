@@ -1,0 +1,20 @@
+.text-input{
+  height: 36px;
+  width: 284px;
+  padding-left: 5px;
+  background-color: rgba(145,145,145, 0.2);
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #6D8B74;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+.text-input.wrong{
+  border-bottom: 2px solid #ff3333;
+}
+
+.text-input::placeholder{
+  font-size: 18px;
+  color: rgba(87,87,87, 0.75);
+}

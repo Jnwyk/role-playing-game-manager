@@ -10,7 +10,8 @@ const characterSchema = new Schema(
       required: [true, "Owner of the character is required is required"],
     },
     description: { type: String, default: "No description provided" },
-    statistics: { type: Object, default: "No statistics provided" },
+    statistics: { type: Object },
+    picture: { type: String },
   },
   {
     timestamps: true,

@@ -1,6 +1,6 @@
-import "./TextInput.css";
+import "./TextArea.css";
 
-const TextInput = ({ label, placeholder, id, changeInput }) => {
+const TextArea = ({ label, placeholder, id, changeInput }) => {
   return (
     <label className="text-input">
       {label}
@@ -15,4 +15,4 @@ const TextInput = ({ label, placeholder, id, changeInput }) => {
   );
 };
 
-export default TextInput;
+export default TextArea;

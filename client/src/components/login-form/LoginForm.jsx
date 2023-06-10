@@ -1,5 +1,5 @@
 import "./LoginForm.css";
-import TextInput from "../text-input/TextInput";
+import LoginTextInput from "../login-text-input/LoginTextInput";
 import Button from "../button/Button";
 import { useState } from "react";
 import RedirectText from "../redirect-text/RedirectText";
@@ -41,12 +41,12 @@ const LoginForm = ({ loginUser }) => {
   else
     return (
       <FormCard>
-        <TextInput
+        <LoginTextInput
           placeholder="Username"
           id="username"
           onChange={(value) => handleSetRegisterForm("username", value)}
         />
-        <TextInput
+        <LoginTextInput
           placeholder="Password"
           id="password"
           onChange={(value) => handleSetRegisterForm("password", value)}

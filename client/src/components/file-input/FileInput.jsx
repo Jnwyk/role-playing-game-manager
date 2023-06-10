@@ -1,11 +1,11 @@
-import "./TextInput.css";
+import "./FileInput.css";
 
-const TextInput = ({ label, placeholder, id, changeInput }) => {
+const FileInput = ({ label, placeholder, id, changeInput }) => {
   return (
-    <label className="text-input">
+    <label className="file-input">
       {label}
       <input
-        type="text"
+        type="file"
         placeholder={placeholder}
         id={id}
         name={id}
@@ -15,4 +15,4 @@ const TextInput = ({ label, placeholder, id, changeInput }) => {
   );
 };
 
-export default TextInput;
+export default FileInput;
