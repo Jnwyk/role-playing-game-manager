@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const Games = require("../db/models/game.js");
 const Users = require("../db/models/user.js");
+const Characters = require("../db/models/character.js");
 const mongoose = require("mongoose");
 
 const create = async (req, res) => {
@@ -35,4 +36,25 @@ const getAll = async (req, res) => {
   }
 };
 
-module.exports = Router().get("/", getAll).post("/", create);
+const getOne = async (req, res) => {
+  try {
+    let game = await Games.findById(req.params.id).populate(
+      "players",
+      "username"
+    );
+    const characters = await Characters.find({ game: req.params.id }).populate(
+      "player",
+      "username"
+    );
+    res
+      .status(200)
+      .json({ msg: "success", game: game, characters: [...characters] });
+  } catch (err) {
+    res.status(500).json({ err: "Internal server error" || err });
+  }
+};
+
+module.exports = Router()
+  .get("/", getAll)
+  .post("/", create)
+  .get("/:id", getOne);

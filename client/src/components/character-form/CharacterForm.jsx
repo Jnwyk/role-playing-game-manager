@@ -6,7 +6,7 @@ import TextArea from "../text-area/TextArea";
 import DropdownInput from "../dropdown-input/DropdownInput";
 import StatisticsForm from "../statistics-form/StatisticsForm";
 
-const CharacterForm = ({ players }) => {
+const CharacterForm = ({ players, addNewCharacter }) => {
   const [active, setActive] = useState(false);
   const [character, setCharacter] = useState({
     name: "",
@@ -16,11 +16,15 @@ const CharacterForm = ({ players }) => {
     statistics: {},
   });
 
+  const constructPlayersUsernameArray = () =>
+    players.map((player) => player.username);
+
   const handleCharacterInputChange = (key, input) => {
     setCharacter({ ...character, [key]: input });
   };
 
   const handleAddStatistic = (e, key, value) => {
+    if (!key) return;
     e.preventDefault();
     const { empty, ...newStatistics } = character.statistics;
     setCharacter({
@@ -31,45 +35,68 @@ const CharacterForm = ({ players }) => {
 
   const createCharacter = (e) => {
     e.preventDefault();
-    console.log(character);
+    setActive(!active);
+    addNewCharacter(character);
   };
 
   if (active) {
     return (
-      <div className="character-form__container">
-        <form>
-          <TextInput
-            label="Character Name"
-            placeholder="Input Name"
-            id="name"
-            changeInput={(input) => handleCharacterInputChange("name", input)}
-          />
-          <TextArea
-            label="Character description"
-            placeholder="type..."
-            id="description"
-            changeInput={(input) =>
-              handleCharacterInputChange("description", input)
-            }
-          />
-          <DropdownInput
-            players={players}
-            changeInput={(input) => handleCharacterInputChange("player", input)}
-          />
-          <StatisticsForm
-            addStatistic={(e, key, value) => handleAddStatistic(e, key, value)}
-            statistics={character.statistics}
-          />
-          <Button type="submit" onClick={(e) => createCharacter(e)}>
-            Submit
-          </Button>
-        </form>
-      </div>
+      <form className="character-form">
+        <TextInput
+          label="Character Name"
+          placeholder="Name..."
+          id="name"
+          changeInput={(input) => handleCharacterInputChange("name", input)}
+        />
+        <TextInput
+          label="Character Picture"
+          placeholder="Picture URL..."
+          id="picture"
+          changeInput={(input) => handleCharacterInputChange("picture", input)}
+        />
+        <DropdownInput
+          label="Player"
+          players={constructPlayersUsernameArray()}
+          changeInput={(input) => handleCharacterInputChange("player", input)}
+        />
+        <TextInput
+          label="Character Profession"
+          placeholder="Profession..."
+          id="picture"
+          changeInput={(input) =>
+            handleCharacterInputChange("profession", input)
+          }
+        />
+        <TextArea
+          label="Character description"
+          placeholder="Description..."
+          id="description"
+          changeInput={(input) =>
+            handleCharacterInputChange("description", input)
+          }
+        />
+        <StatisticsForm
+          addStatistic={(e, key, value) => handleAddStatistic(e, key, value)}
+          statistics={character.statistics}
+        />
+        <Button
+          type="submit"
+          className="character-form__button"
+          onClick={(e) => createCharacter(e)}
+        >
+          Submit
+        </Button>
+      </form>
     );
   } else {
     return (
-      <div className="character-form__container">
-        <Button onClick={() => setActive(true)}>Add character</Button>
+      <div className="character-form">
+        <Button
+          className="character-form__button"
+          onClick={() => setActive(true)}
+        >
+          Add character
+        </Button>
       </div>
     );
   }

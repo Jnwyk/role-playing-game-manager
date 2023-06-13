@@ -1,0 +1,48 @@
+.character-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FCDDB0;
+  padding: 24px 32px 16px 32px;
+  margin: 32px 0;
+  box-shadow: 0px 0px 10px 0 rgba(0,0,0,0.2);
+}
+
+.character-card__image{
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  object-position: top;
+  margin: 16px 8px;
+  box-shadow: 0px 1px 25px 13px rgba(0,0,0,0.31) inset;
+}
+
+.character-card__statistics-container{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin: 10px;
+  padding: 8px;
+}
+
+.character-card__statistics{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 4px 0;
+  box-shadow: 0px 0px 10px 0 rgba(0,0,0,0.2);
+  background-color: rgba(255, 228, 205, 0.723);
+}
+
+.character-card__statistics-text{
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 1px 16px;
+  width: 100px;
+  margin: 1px 10px;
+}
+
+.character-card__statistics-text.name{
+  text-align: left;
+}

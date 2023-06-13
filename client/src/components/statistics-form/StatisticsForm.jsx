@@ -8,33 +8,50 @@ const StatisticsForm = ({ addStatistic, statistics }) => {
   const [value, setValue] = useState();
 
   return (
-    <div className="statistics-form__container">
+    <div className="statistics-form">
       {Object.keys(statistics).map((stat) => {
         if (stat != "empty")
           return (
             <div className="statistics-form__statistic" key={stat}>
-              <h4>{stat}</h4>: <p>{statistics[stat]}</p>
+              <div className="statistics-form__info_constainer">
+                <p className="statistics-form__label">Name</p>
+                <p className="statistics-form__value">{stat}</p>
+              </div>
+              <div className="statistics-form__info_constainer">
+                <p className="statistics-form__label">Value</p>
+                <p className="statistics-form__value">{statistics[stat]}</p>
+              </div>
             </div>
           );
         return (
           <div className="statistics-form__statistic" key={stat}>
             <TextInput
+              className="statistics-form__input"
               id="stat_name"
-              placeholder="type stat"
+              placeholder="Statistics..."
               label="Name"
               changeInput={(input) => setName(input)}
             />
             <TextInput
+              className="statistics-form__input"
               id="stat_value"
-              placeholder="type value"
+              placeholder="Value..."
               label="Value"
               changeInput={(input) => setValue(input)}
             />
-            <Button onClick={(e) => addStatistic(e, name, value)}>Add</Button>
+            <Button
+              className="statistics-form__button"
+              onClick={(e) => addStatistic(e, name, value)}
+            >
+              Add
+            </Button>
           </div>
         );
       })}
-      <Button onClick={(e) => addStatistic(e, "empty", "")}>
+      <Button
+        className="statistics-form__button"
+        onClick={(e) => addStatistic(e, "empty", "")}
+      >
         Add new stat
       </Button>
     </div>

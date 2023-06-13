@@ -1,0 +1,21 @@
+.text-input{
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0 8px 2px;
+  font-size: 12px;
+  font-weight: 700;
+  width: 100%;
+}
+
+.text-input__input{
+  font-size: 18px;
+  padding-left: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border: none;
+}
+
+.statistics-form__input{
+  font-size: 14px;
+  width: 90%;
+}

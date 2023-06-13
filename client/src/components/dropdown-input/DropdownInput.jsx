@@ -8,9 +8,10 @@ const DropdownInput = ({
   changeInput,
 }) => {
   return (
-    <label className="text-input">
+    <label className="dropdown-input">
       {label}
       <select
+        className="dropdown-input__input"
         placeholder={placeholder}
         id={id}
         name={id}
@@ -20,8 +21,8 @@ const DropdownInput = ({
           Pick a player
         </option>
         {players.map((player) => (
-          <option key={player.username} value={player.username}>
-            {player.username}
+          <option key={player} value={player}>
+            {player}
           </option>
         ))}
       </select>

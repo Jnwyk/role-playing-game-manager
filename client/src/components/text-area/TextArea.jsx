@@ -2,9 +2,10 @@ import "./TextArea.css";
 
 const TextArea = ({ label, placeholder, id, changeInput }) => {
   return (
-    <label className="text-input">
+    <label className="text-area">
       {label}
-      <input
+      <textarea
+        className="text-area__input"
         type="text"
         placeholder={placeholder}
         id={id}

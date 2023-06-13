@@ -1,4 +1,4 @@
-.text-input{
+.login-text-input{
   height: 36px;
   width: 284px;
   padding-left: 5px;
@@ -10,11 +10,11 @@
   margin-bottom: 20px;
 }
 
-.text-input.wrong{
+.login-text-input.wrong{
   border-bottom: 2px solid #ff3333;
 }
 
-.text-input::placeholder{
+.login-text-input::placeholder{
   font-size: 18px;
   color: rgba(87,87,87, 0.75);
 }

@@ -1,9 +1,10 @@
 import LogoAndText from "../logo-and-text/LogoAndText";
 import "./GameCard.css";
+import { Link } from "react-router-dom";
 
 const GameCard = ({ game }) => {
   return (
-    <div className="game-card">
+    <Link to={`http://localhost:3000/game/${game._id}`} className="game-card">
       <div className="game-card__image-wrap">
         <img
           src={game.picture}
@@ -23,7 +24,7 @@ const GameCard = ({ game }) => {
         </div>
         <p className="game-card__description">{game.description}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -4,6 +4,15 @@ const { Schema } = mongoose;
 const characterSchema = new Schema(
   {
     name: { type: String, required: [true, "Character name is required"] },
+    game: {
+      type: mongoose.ObjectId,
+      ref: "Game",
+      required: [true, "Character must be assigned to a game"],
+    },
+    profession: {
+      type: String,
+      required: [true, "Character profession is required"],
+    },
     player: {
       type: mongoose.ObjectId,
       ref: "User",
