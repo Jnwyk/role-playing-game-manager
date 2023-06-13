@@ -8,6 +8,8 @@
   display: flex;
   align-items: center;
   transition: 0.3s;
+  text-decoration: none;
+  color: black;
 }
 
 .game-card:hover{

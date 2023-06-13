@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createContext } from "react";
-import axios from "axios";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "./pages/register";
 import Login from "./pages/login";
@@ -10,6 +9,7 @@ import Tests from "./pages/tests";
 import Music from "./pages/music";
 import Lights from "./pages/lights";
 import Profile from "./pages/profile";
+import Game from "./pages/game";
 
 export const LoggedUserContext = createContext();
 
@@ -23,6 +23,7 @@ const App = () => (
         <Route path="/profile" element={<Profile />} />
         <Route path="/lights" element={<Lights />} />
         <Route path="/music" element={<Music />} />
+        <Route path="/game/:gameId" element={<Game />} />
         <Route path="/" element={<Login />} />
       </Routes>
     </BrowserRouter>

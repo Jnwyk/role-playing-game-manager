@@ -1,16 +1,18 @@
 import "./TextInput.css";
 
-const TextInput = ({ placeholder, id, onChange }) => {
+const TextInput = ({ className, label, placeholder, id, changeInput }) => {
   return (
-    <input
-      className={`text-input`}
-      type="text"
-      id={id}
-      name={id}
-      placeholder={placeholder}
-      autoComplete="off"
-      onChange={(e) => onChange(e.target.value)}
-    />
+    <label className="text-input">
+      {label}
+      <input
+        className={`text-input__input ${className}`}
+        type="text"
+        placeholder={placeholder}
+        id={id}
+        name={id}
+        onChange={(e) => changeInput(e.target.value)}
+      />
+    </label>
   );
 };
 
