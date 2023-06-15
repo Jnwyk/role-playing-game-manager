@@ -1,16 +1,16 @@
 import "./CharacterCard.css";
+import WrapCard from "../wrap-card/WrapCard";
 
 const CharacterCard = ({
   picture,
   name,
   player,
   description,
-  profession = "Wojownik",
+  profession,
   statistics = {},
 }) => {
   return (
-    <div className="character-card">
-      {console.log(player)}
+    <WrapCard>
       <h2 className="character-card__text">{`${profession} ${name}`}</h2>
       <h3 className="character-card__text">{player.username}</h3>
       <img className="character-card__image" src={picture} alt={name} />
@@ -18,7 +18,7 @@ const CharacterCard = ({
       <div className="character-card__statistics-container">
         {Object.keys(statistics).map((stat) => {
           return (
-            <div className="character-card__statistics">
+            <div key={stat} className="character-card__statistics">
               <div className="character-card__statistics-text name">{stat}</div>
               <div className="character-card__statistics-text">
                 {statistics[stat]}
@@ -27,7 +27,7 @@ const CharacterCard = ({
           );
         })}
       </div>
-    </div>
+    </WrapCard>
   );
 };
 

@@ -1,0 +1,15 @@
+.log-form__text{
+  width: 100%;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.log-form__header-container{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: right;
+  border-bottom: 1px solid black;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}

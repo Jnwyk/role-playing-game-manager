@@ -1,0 +1,35 @@
+.log-card__header-container{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+.log-card__info-container{
+  display: flex;
+  align-items: center;
+  margin: 2px;
+}
+
+.log-card__header-text{
+  font-size: 16px;
+  margin-right: 16px;
+}
+
+.log-card__header-text:last-child{
+  margin-right: 0;
+}
+
+.log-card__text{
+  margin: 0 8px;
+  min-height: 100px;
+}
+
+.log-card__input{
+  width: 100%;
+  resize: vertical;
+  min-height: 100px;
+}

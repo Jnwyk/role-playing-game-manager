@@ -1,6 +1,13 @@
 import "./TextInput.css";
 
-const TextInput = ({ className, label, placeholder, id, changeInput }) => {
+const TextInput = ({
+  className,
+  label,
+  placeholder,
+  id,
+  changeInput,
+  value,
+}) => {
   return (
     <label className="text-input">
       {label}
@@ -11,6 +18,7 @@ const TextInput = ({ className, label, placeholder, id, changeInput }) => {
         id={id}
         name={id}
         onChange={(e) => changeInput(e.target.value)}
+        value={value}
       />
     </label>
   );
