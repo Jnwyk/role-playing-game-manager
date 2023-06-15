@@ -4,7 +4,7 @@ const User = require("../db/models/user.js");
 
 const create = async (req, res) => {
   try {
-    const user = await User.findById(req.body.player);
+    const user = await User.findOne({ username: req.body.player });
     const character = await Character.create({ ...req.body, player: user._id });
     res.status(201).json({ msg: "Success", character: character });
   } catch (err) {

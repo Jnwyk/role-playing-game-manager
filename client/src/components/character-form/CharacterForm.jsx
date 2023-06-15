@@ -5,6 +5,7 @@ import { useState } from "react";
 import TextArea from "../text-area/TextArea";
 import DropdownInput from "../dropdown-input/DropdownInput";
 import StatisticsForm from "../statistics-form/StatisticsForm";
+import WrapCard from "../wrap-card/WrapCard";
 
 const CharacterForm = ({ players, addNewCharacter }) => {
   const [active, setActive] = useState(false);
@@ -23,13 +24,12 @@ const CharacterForm = ({ players, addNewCharacter }) => {
     setCharacter({ ...character, [key]: input });
   };
 
-  const handleAddStatistic = (e, key, value) => {
-    if (!key) return;
-    e.preventDefault();
-    const { empty, ...newStatistics } = character.statistics;
+  const addStatistics = (key, value) => {
+    console.log(key);
+    if (!key || key === "" || !value || value === "") return;
     setCharacter({
       ...character,
-      statistics: { ...newStatistics, [key]: value },
+      statistics: { ...character.statistics, [key]: value },
     });
   };
 
@@ -37,22 +37,43 @@ const CharacterForm = ({ players, addNewCharacter }) => {
     e.preventDefault();
     setActive(!active);
     addNewCharacter(character);
+    setCharacter({
+      name: "",
+      picture: "",
+      description: "",
+      player: "",
+      statistics: {},
+    });
+  };
+
+  const isCharacterFormOk = () => {
+    if (
+      character.name !== "" &&
+      character.picture !== "" &&
+      character.player !== "" &&
+      character.profession !== ""
+    ) {
+      return true;
+    }
+    return false;
   };
 
   if (active) {
     return (
-      <form className="character-form">
+      <WrapCard className="character-form">
         <TextInput
           label="Character Name"
           placeholder="Name..."
           id="name"
           changeInput={(input) => handleCharacterInputChange("name", input)}
+          value={character.name}
         />
         <TextInput
           label="Character Picture"
           placeholder="Picture URL..."
           id="picture"
           changeInput={(input) => handleCharacterInputChange("picture", input)}
+          value={character.picture}
         />
         <DropdownInput
           label="Player"
@@ -66,6 +87,7 @@ const CharacterForm = ({ players, addNewCharacter }) => {
           changeInput={(input) =>
             handleCharacterInputChange("profession", input)
           }
+          value={character.profession}
         />
         <TextArea
           label="Character description"
@@ -76,28 +98,29 @@ const CharacterForm = ({ players, addNewCharacter }) => {
           }
         />
         <StatisticsForm
-          addStatistic={(e, key, value) => handleAddStatistic(e, key, value)}
+          addStatistic={(key, value) => addStatistics(key, value)}
           statistics={character.statistics}
         />
         <Button
           type="submit"
+          disabled={isCharacterFormOk() ? false : true}
           className="character-form__button"
           onClick={(e) => createCharacter(e)}
         >
           Submit
         </Button>
-      </form>
+      </WrapCard>
     );
   } else {
     return (
-      <div className="character-form">
+      <WrapCard className="character-form">
         <Button
           className="character-form__button"
           onClick={() => setActive(true)}
         >
           Add character
         </Button>
-      </div>
+      </WrapCard>
     );
   }
 };

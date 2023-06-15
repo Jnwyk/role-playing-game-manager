@@ -2,6 +2,7 @@ const { Router } = require("express");
 const Games = require("../db/models/game.js");
 const Users = require("../db/models/user.js");
 const Characters = require("../db/models/character.js");
+const Logs = require("../db/models/log.js");
 const mongoose = require("mongoose");
 
 const create = async (req, res) => {
@@ -46,9 +47,15 @@ const getOne = async (req, res) => {
       "player",
       "username"
     );
+    const logs = await Logs.find({ game: req.params.id });
     res
       .status(200)
-      .json({ msg: "success", game: game, characters: [...characters] });
+      .json({
+        msg: "success",
+        game: game,
+        characters: [...characters],
+        logs: [...logs],
+      });
   } catch (err) {
     res.status(500).json({ err: "Internal server error" || err });
   }

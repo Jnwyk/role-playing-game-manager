@@ -1,8 +1,13 @@
 import "./Button.css";
 
-const Button = ({ children, type, onClick, className }) => {
+const Button = ({ children, type, onClick, className, disabled }) => {
   return (
-    <button type={type} className={`${className} button`} onClick={onClick}>
+    <button
+      type={type}
+      disabled={disabled}
+      className={`${className} button`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
