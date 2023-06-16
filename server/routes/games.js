@@ -5,10 +5,12 @@ const Characters = require("../db/models/character.js");
 const Logs = require("../db/models/log.js");
 const mongoose = require("mongoose");
 
-const create = async (req, res) => {
+const create = async (req, res, next) => {
   try {
     const master = await Users.findOne({ username: req.body.master });
+    if (!master) throw new Error("specified master of game not found");
     const players = await Users.find({ username: req.body.player });
+    if (!players) throw new Error("specified players not found");
     const game = await Games.create({
       ...req.body,
       master: master._id,
@@ -16,13 +18,20 @@ const create = async (req, res) => {
     });
     res.status(201).json({ msg: "Game created", game: game });
   } catch (err) {
-    if (err instanceof mongoose.Error.ValidationError)
-      return res.status(400).json({ err: err });
-    return res.status(500).json({ err: "Inernal server error" || err });
+    if (err instanceof mongoose.Error.ValidationError) {
+      err.status = 403;
+      next(err);
+    }
+    if (
+      err.message === "specified master of game not found" ||
+      err.message === "specified players of game not found"
+    )
+      err.status(404);
+    next(err);
   }
 };
 
-const getAll = async (req, res) => {
+const getAll = async (req, res, next) => {
   try {
     let games = await Games.find({});
     games = await Promise.all(
@@ -33,31 +42,31 @@ const getAll = async (req, res) => {
     );
     res.status(200).json({ msg: "success", games: games });
   } catch (err) {
-    res.status(500).json({ err: "Internal server error" || err });
+    next(err);
   }
 };
 
-const getOne = async (req, res) => {
+const getOne = async (req, res, next) => {
   try {
     let game = await Games.findById(req.params.id).populate(
       "players",
       "username"
     );
+    if (!game) throw new Error("game not found");
     const characters = await Characters.find({ game: req.params.id }).populate(
       "player",
       "username"
     );
     const logs = await Logs.find({ game: req.params.id });
-    res
-      .status(200)
-      .json({
-        msg: "success",
-        game: game,
-        characters: [...characters],
-        logs: [...logs],
-      });
+    res.status(200).json({
+      msg: "success",
+      game: game,
+      characters: [...characters],
+      logs: [...logs],
+    });
   } catch (err) {
-    res.status(500).json({ err: "Internal server error" || err });
+    if (err.message === "game not found") err.status = 404;
+    next(err);
   }
 };
 

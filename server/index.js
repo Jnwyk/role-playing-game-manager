@@ -13,8 +13,28 @@ app.use(cors());
 app.use(express.json());
 app.use(initPassport());
 
+const errorInvalidPath = (req, res, next) => {
+  let error = new Error("Whoopsy... Wrong path!");
+  error.status = 404;
+  next(error);
+};
+
+const errorLogger = (error, req, res, next) => {
+  console.log(error);
+  next(error);
+};
+
+const errorResponse = (error, req, res, next) => {
+  const status = error.status || 500;
+  res
+    .status(error.status || 500)
+    .json({ success: false, status: status, message: error.message });
+};
+
 app.use("/api", routes);
-app.get("*", (req, res) => res.status(404).json({ msg: "Page not found" }));
+app.use(errorInvalidPath);
+app.use(errorLogger);
+app.use(errorResponse);
 
 app.listen(process.env.PORT, () =>
   console.log(`Server is listening at ${process.env.HOST}:${process.env.PORT}`)
