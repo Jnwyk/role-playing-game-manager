@@ -4,6 +4,9 @@ const cors = require("cors");
 const initPassport = require("./initialize-passport.js");
 const connectDb = require("./db/connection.js");
 const routes = require("./routes/");
+const errorLogger = require("./helpers/errors/errorLogger.js");
+const errorResponse = require("./helpers/errors/errorResponse.js");
+const errorInvalidPath = require("./helpers/errors/errorInvalidPath.js");
 const cookieParser = require("cookie-parser");
 
 app = express();
@@ -12,24 +15,6 @@ app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 app.use(initPassport());
-
-const errorInvalidPath = (req, res, next) => {
-  let error = new Error("Whoopsy... Wrong path!");
-  error.status = 404;
-  next(error);
-};
-
-const errorLogger = (error, req, res, next) => {
-  console.log(error);
-  next(error);
-};
-
-const errorResponse = (error, req, res, next) => {
-  const status = error.status || 500;
-  res
-    .status(error.status || 500)
-    .json({ success: false, status: status, message: error.message });
-};
 
 app.use("/api", routes);
 app.use(errorInvalidPath);
