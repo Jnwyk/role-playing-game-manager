@@ -60,36 +60,37 @@ const refresh = (req, res) => {
     .catch((err) => res.status(400));
 };
 
-const create = async (req, res) => {
+const create = async (req, res, next) => {
   try {
     const user = await Users.findOne({ username: req.body.user });
     const song = await Songs.create({
       ...req.body,
       user: user,
     });
-    res.status(201).json({ msg: "Song added to favourites", song: song });
+    res
+      .status(201)
+      .json({ success: true, msg: "Song added to favourites", song: song });
   } catch (err) {
-    if (err instanceof mongoose.Error.ValidationError)
-      return res.status(400).json({ err: err });
-    return res.status(500).json({ err: "Inernal server error" || err });
+    if (err instanceof mongoose.Error.ValidationError) err.status = 403;
+    next(err);
   }
 };
 
-const getAll = async (req, res) => {
+const getAll = async (req, res, next) => {
   try {
     let songs = await Songs.find({});
-    res.status(200).json({ msg: "success", songs: songs });
+    res.status(200).json({ success: true, songs: songs });
   } catch (err) {
-    return res.status(500).json({ err: "Inernal server error" || err });
+    next(err);
   }
 };
 
-const remove = async (req, res) => {
+const remove = async (req, res, next) => {
   try {
     let song = await Songs.findOneAndDelete({ title: req.params.title });
-    res.status(200).json({ msg: "Success", song: song });
+    res.status(200).json({ success: true, song: song });
   } catch (err) {
-    return res.status(500).json({ err: "Inernal server error" || err });
+    next(err);
   }
 };
 
