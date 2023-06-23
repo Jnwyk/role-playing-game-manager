@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./SongSearch.css";
 import SongResults from "../song-results/SongResults";
+import WrapCard from "../wrap-card/WrapCard";
 
 const SongSearch = ({ accessToken, spotifyApi, pickSong }) => {
   const [search, setSearch] = useState("");
@@ -31,17 +32,31 @@ const SongSearch = ({ accessToken, spotifyApi, pickSong }) => {
     });
     return () => (cancel = true);
   }, [search, accessToken]);
+
+  const printResults = () => {
+    if (searchResults.length !== 0) {
+      return (
+        <SongResults
+          results={searchResults}
+          pickSong={(track) => pickSong(track)}
+        />
+      );
+    }
+    return (
+      <div className="song-search__empty-input"> Find songs on Spotify </div>
+    );
+  };
+
   return (
-    <div type="search">
+    <WrapCard className="song-search__card">
       <input
+        className="song-search__input"
         placeholder="Search song/artist"
         onChange={(e) => setSearch(e.target.value)}
       />
-      <SongResults
-        results={searchResults}
-        pickSong={(track) => pickSong(track)}
-      />
-    </div>
+      {printResults()}
+      {console.log(searchResults.length)}
+    </WrapCard>
   );
 };
 

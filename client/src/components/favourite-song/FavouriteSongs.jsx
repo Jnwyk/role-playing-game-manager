@@ -1,16 +1,20 @@
 import SongResult from "../song-result/SongResult";
+import WrapCard from "../wrap-card/WrapCard";
+import Button from "../button/Button";
 import "./FavouriteSong.css";
 
 const FavouriteSong = ({ song, pickSong, removeSong }) => {
   const handleRemoveSong = () => removeSong(song);
   return (
-    <div>
+    <div className="favourite-song">
       <SongResult
         songData={song}
         pickSong={(track) => pickSong(track)}
         key={song.uri}
       />
-      <button onClick={handleRemoveSong}>Remove from favourites</button>
+      <Button className="favourite-song__button" onClick={handleRemoveSong}>
+        Remove
+      </Button>
     </div>
   );
 };

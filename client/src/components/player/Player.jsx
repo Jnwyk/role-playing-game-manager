@@ -6,9 +6,20 @@ const Player = ({ accessToken, track }) => {
 
   return (
     <SpotifyPlayer
+      styles={{
+        bgColor: "#212121",
+        color: "#fff",
+        trackNameColor: "#fff",
+        trackArtistColor: "#b3b3b3",
+        sliderColor: "#fff",
+        sliderHandleColor: "#fff",
+        sliderHandleBorderRadius: "100px",
+        sliderTrackBorderRadius: "100px",
+      }}
       token={accessToken}
       showSaveIcon
       uris={track ? [track.uri] : []}
+      hideAttribution={true}
     />
   );
 };

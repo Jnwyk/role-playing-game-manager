@@ -1,0 +1,10 @@
+.favourite-song{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.favourite-song__button{
+  height: 32px;
+  margin: 16px 0 16px 8px;
+}

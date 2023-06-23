@@ -1,13 +1,3 @@
-.character-card{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #FCDDB0;
-  padding: 24px 32px 16px 32px;
-  margin: 32px 0;
-  box-shadow: 0px 0px 10px 0 rgba(0,0,0,0.2);
-}
-
 .character-card__image{
   height: 200px;
   width: 200px;
