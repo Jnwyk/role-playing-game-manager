@@ -2,12 +2,11 @@ import "./styles.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Page from "../components/page/Page.jsx";
-import CharacterForm from "../components/character-form/CharacterForm";
+import CharacterForm from "../components/forms/character-form/CharacterForm";
 import CharacterCard from "../components/character-card/CharacterCard";
-import GameCard from "../components/game-card/GameCard";
 import { useParams } from "react-router-dom";
 import LogCard from "../components/log-card/LogCard";
-import LogForm from "../components/log-form/LogForm";
+import LogForm from "../components/forms/log-form/LogForm";
 
 const Game = () => {
   const [game, setGame] = useState();

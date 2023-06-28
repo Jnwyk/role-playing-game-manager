@@ -3,8 +3,8 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { LoggedUserContext } from "../";
 import Page from "../components/page/Page";
-import SpotifyLogin from "../components/spotify-login/SpotifyLogin";
-import SpotifyDashboard from "../components/spotify-dashboard/SpotifyDashborad";
+import SpotifyLogin from "../components/music/spotify-login/SpotifyLogin";
+import MusicDashboard from "../components/music/music-dashboard/MusicDashborad";
 
 const code = new URLSearchParams(window.location.search).get("code");
 
@@ -48,7 +48,7 @@ const Music = () => {
       {!code ? (
         <SpotifyLogin onClick={handleSpotifyLogin} />
       ) : (
-        <SpotifyDashboard
+        <MusicDashboard
           code={code}
           favouriteSongs={favouriteSongs}
           addToFavourites={(song) => addSongToFavourites(song)}

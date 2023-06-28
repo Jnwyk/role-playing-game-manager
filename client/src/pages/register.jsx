@@ -1,6 +1,6 @@
-import Button from "../components/button/Button";
-import RegisterForm from "../components/register-form/RegisterForm";
-import LoginFooter from "../components/login-footer/LoginFooter";
+import Button from "../components/UI/button/Button";
+import RegisterForm from "../components/forms/register-form/RegisterForm";
+import LoginFooter from "../components/footers/login-footer/LoginFooter";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import { useState } from "react";
