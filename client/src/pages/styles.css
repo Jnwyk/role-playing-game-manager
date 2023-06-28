@@ -47,9 +47,3 @@
   75% { background-position: 50% 75%;}
   100% { background-position: 0 0;}
 }
-
-.temp-game{
-  background-color: #FCDDB0;
-  height: 100px;
-  width: 100vw;
-}

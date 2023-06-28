@@ -1,0 +1,10 @@
+.spotify_dashboard{
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+}
+
+.spotify-dashboard__second-row{
+  display: flex;
+  justify-content: space-between;
+}

@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import "./SpotifyDashboard.css";
 import SongSearch from "../song-search/SongSearch.jsx";
 import SpotifyWebApi from "spotify-web-api-node";
-import Player from "../player/Player";
 import FavouriteSongs from "../favourite-songs/FavouriteSongs";
+import SpotifyPlayer from "../spotify-player/SpotifyPlayer";
 
 const spotifyApi = new SpotifyWebApi({
   clientId: "58bb2cc230f84df699fcd6874f054666",
@@ -35,22 +35,25 @@ const SpotifyDashboard = ({
   };
 
   return (
-    <>
-      <SongSearch
+    <div className="spotify_dashboard">
+      <SpotifyPlayer
         accessToken={accessToken}
-        spotifyApi={spotifyApi}
-        pickSong={(track) => pickSong(track)}
+        currentSong={currentSong}
+        handleAddToFavourites={handleAddToFavourites}
       />
-      <FavouriteSongs
-        songs={favouriteSongs}
-        pickSong={(track) => pickSong(track)}
-        removeSong={(track) => removeSong(track)}
-      />
-      <div>
-        <Player accessToken={accessToken} track={currentSong} />
-        <button onClick={handleAddToFavourites}>Add to favourites</button>
+      <div className="spotify-dashboard__second-row">
+        <SongSearch
+          accessToken={accessToken}
+          spotifyApi={spotifyApi}
+          pickSong={(track) => pickSong(track)}
+        />
+        <FavouriteSongs
+          songs={favouriteSongs}
+          pickSong={(track) => pickSong(track)}
+          removeSong={(track) => removeSong(track)}
+        />
       </div>
-    </>
+    </div>
   );
 };
 

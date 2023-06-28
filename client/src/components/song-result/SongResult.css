@@ -1,0 +1,13 @@
+.song-result__image{
+  height: 70px;
+  width: 70px;
+}
+
+.song-result__info{
+  margin-left: 16px;
+}
+
+.song-result__info h5{
+  margin-left: 4px;
+  color: rgb(43, 43, 43);
+}

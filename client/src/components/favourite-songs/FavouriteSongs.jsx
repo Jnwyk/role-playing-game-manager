@@ -1,10 +1,12 @@
 import SongResult from "../song-result/SongResult";
 import FavouriteSong from "../favourite-song/FavouriteSongs";
 import "./FavouriteSongs.css";
+import WrapCard from "../wrap-card/WrapCard";
 
 const FavouriteSongs = ({ songs, pickSong, removeSong }) => {
   return (
-    <div>
+    <WrapCard className="favourite-songs__card">
+      <h1 className="favourite-songs__title">Favourites</h1>
       {songs.map((song) => (
         <FavouriteSong
           key={`fav-${song.uri}`}
@@ -13,7 +15,7 @@ const FavouriteSongs = ({ songs, pickSong, removeSong }) => {
           removeSong={(song) => removeSong(song)}
         />
       ))}
-    </div>
+    </WrapCard>
   );
 };
 
