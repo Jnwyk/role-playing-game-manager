@@ -3,7 +3,7 @@ import "./SpotifyLogin.css";
 
 const SpotifyLogin = ({ onClick }) => {
   return (
-    <Button className="spotify-button" onClick={onClick}>
+    <Button className="spotify-login__button" onClick={onClick}>
       Login to Spotify
     </Button>
   );

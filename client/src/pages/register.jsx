@@ -22,7 +22,7 @@ const Register = () => {
     <>
       <div className="background" />
       <Link to={"/"}>
-        <Button className="button-top-right">Login</Button>
+        <Button className="register__button-top-right">Login</Button>
       </Link>
       <div className="central-container">
         <RegisterForm registerUser={(user) => handleSetRegisterUser(user)} />

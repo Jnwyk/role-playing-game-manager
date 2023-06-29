@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Page from "../components/page/Page.jsx";
 import CharacterForm from "../components/forms/character-form/CharacterForm";
-import CharacterCard from "../components/character-card/CharacterCard";
+import CharacterCard from "../components/game/character-card/CharacterCard";
 import { useParams } from "react-router-dom";
 import LogCard from "../components/log-card/LogCard";
 import LogForm from "../components/forms/log-form/LogForm";

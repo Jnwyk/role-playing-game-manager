@@ -57,7 +57,11 @@ const RegisterForm = ({ registerUser }) => {
           id="password"
           onChange={(value) => handleSetRegisterForm("password", value)}
         />
-        <Button type="submit" onClick={submitForm}>
+        <Button
+          type="submit"
+          className="register-form__button"
+          onClick={submitForm}
+        >
           Register
         </Button>
         <RedirectText loginType={signIn} onClick={handleSetSignIn} />

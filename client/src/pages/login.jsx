@@ -27,7 +27,7 @@ const Login = () => {
     <>
       <div className="background" />
       <Link to={"/register"}>
-        <Button className="button-top-right">Register</Button>
+        <Button className="login__button-top-right">Register</Button>
       </Link>
       <div className="central-container">
         <LoginForm loginUser={(user) => handleSetLoginUser(user)} />

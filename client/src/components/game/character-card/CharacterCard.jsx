@@ -1,5 +1,5 @@
 import "./CharacterCard.css";
-import Card from "../UI/card/Card";
+import Card from "../../UI/card/Card";
 
 const CharacterCard = ({
   picture,

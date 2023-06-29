@@ -51,7 +51,11 @@ const LoginForm = ({ loginUser }) => {
           id="password"
           onChange={(value) => handleSetRegisterForm("password", value)}
         />
-        <Button type="submit" onClick={submitForm}>
+        <Button
+          type="submit"
+          className="login-form__button"
+          onClick={submitForm}
+        >
           Login
         </Button>
         <RedirectText loginType={signIn} onClick={handleSetSignIn} />

@@ -6,14 +6,10 @@ export default function useFetch(url, method, body, redirectUrl) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const fetchData = async (test) => {
+  const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await axios({
-        method: method,
-        url: url,
-        data: test,
-      });
+      const response = await axios(url).then((res) => setData(res.data));
       setLoading(false);
       setData(response.data);
       if (body) {
