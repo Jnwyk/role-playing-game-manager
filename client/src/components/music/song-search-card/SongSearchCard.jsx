@@ -55,7 +55,6 @@ const SongSearchCard = ({ accessToken, spotifyApi, pickSong }) => {
         onChange={(e) => setSearch(e.target.value)}
       />
       {printResults()}
-      {console.log(searchResults.length)}
     </Card>
   );
 };

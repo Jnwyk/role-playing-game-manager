@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function useFetch(url, method, body, redirectUrl) {
+export default function useFetch(url, dependencyVariable) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -9,12 +9,9 @@ export default function useFetch(url, method, body, redirectUrl) {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await axios(url).then((res) => setData(res.data));
+      const response = await axios(url).then((res) => res.data);
+      setData(response);
       setLoading(false);
-      setData(response.data);
-      if (body) {
-        window.location.href = redirectUrl;
-      }
     } catch (err) {
       setLoading(false);
       setError(true);
@@ -22,8 +19,8 @@ export default function useFetch(url, method, body, redirectUrl) {
   };
 
   useEffect(() => {
-    fetchData(body);
-  }, [url, method, body]);
+    fetchData();
+  }, [url, dependencyVariable]);
 
-  return [{ data, loading, error }, fetchData];
+  return [data, loading, error];
 }

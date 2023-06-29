@@ -1,25 +1,12 @@
 import "./styles.css";
-import { useState, useEffect } from "react";
 import Page from "../components/page/Page.jsx";
 import GameList from "../components/games/game-list/GameList";
+import useFetch from "../hooks/useFetch";
 
 const Games = () => {
-  const [games, setGames] = useState([]);
+  const [games, loading, error] = useFetch("/api/games");
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const games = await fetch("/api/games").then((res) => res.json());
-    setGames(games.games);
-  };
-
-  return (
-    <Page>
-      <GameList games={games} />
-    </Page>
-  );
+  return <Page>{!games ? " " : <GameList games={games.games} />}</Page>;
 };
 
 export default Games;
