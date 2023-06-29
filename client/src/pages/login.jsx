@@ -4,23 +4,12 @@ import LoginFooter from "../components/footers/login-footer/LoginFooter";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import axios from "axios";
-import { useState } from "react";
 
 const Login = () => {
-  const [loginUser, setLoginUser] = useState(null);
-
   const handleSetLoginUser = async (user) => {
-    // const [{ data, loading, error }, fetchData] = useFetch(
-    //   "http://localhost:3080/api/auth/login/traditional",
-    //   "post",
-    //   loginUser,
-    //   "http://localhost:3000/#/games"
-    // );
-    const data = await axios({
-      method: "post",
-      url: "/api/auth/login/traditional",
-      data: user,
-    });
+    await axios.post("/api/auth/login/traditional", { ...user });
+    console.log("test");
+    window.location.href = "http://localhost:3000/games";
   };
 
   return (

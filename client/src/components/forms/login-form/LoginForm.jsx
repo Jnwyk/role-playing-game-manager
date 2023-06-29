@@ -22,7 +22,8 @@ const LoginForm = ({ loginUser }) => {
     setUserForm({ ...userForm, [name]: value });
   };
 
-  const submitForm = () => {
+  const submitForm = (e) => {
+    e.preventDefault();
     loginUser(userForm);
   };
 
@@ -54,7 +55,7 @@ const LoginForm = ({ loginUser }) => {
         <Button
           type="submit"
           className="login-form__button"
-          onClick={submitForm}
+          onClick={(e) => submitForm(e)}
         >
           Login
         </Button>
