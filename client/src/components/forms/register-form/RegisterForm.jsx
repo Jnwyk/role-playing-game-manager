@@ -23,7 +23,8 @@ const RegisterForm = ({ registerUser }) => {
     else setSignIn("traditional");
   };
 
-  const submitForm = () => {
+  const submitForm = (e) => {
+    e.preventDefault();
     registerUser(userForm);
   };
 
@@ -60,7 +61,7 @@ const RegisterForm = ({ registerUser }) => {
         <Button
           type="submit"
           className="register-form__button"
-          onClick={submitForm}
+          onClick={(e) => submitForm(e)}
         >
           Register
         </Button>

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import "./Page.css";
 import { LoggedUserContext } from "../..";
-import UserCard from "../game/user-card/UserCard";
+import UserCard from "../user-card/UserCard";
 import Navbar from "../navigation/navbar/Navbar";
 
 const Page = ({ children }) => {

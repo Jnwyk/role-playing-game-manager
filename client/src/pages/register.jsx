@@ -3,20 +3,13 @@ import RegisterForm from "../components/forms/register-form/RegisterForm";
 import LoginFooter from "../components/footers/login-footer/LoginFooter";
 import { Link } from "react-router-dom";
 import "./styles.css";
-import { useState } from "react";
-import useFetch from "../hooks/useFetch";
+import axios from "axios";
 
 const Register = () => {
-  const [registeredUser, setRegisteredUser] = useState(null);
-
-  const [{ data, loading, error }, fetchData] = useFetch(
-    "/api/auth/signup/traditional",
-    "post",
-    registeredUser,
-    "http://localhost:3000/"
-  );
-
-  const handleSetRegisterUser = (user) => setRegisteredUser(user);
+  const handleSetRegisterUser = async (user) => {
+    await axios.post("/api/auth/signup/traditional", { ...user });
+    window.location.href = "http://localhost:3000/";
+  };
 
   return (
     <>
