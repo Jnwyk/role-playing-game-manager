@@ -28,6 +28,16 @@ const RegisterForm = ({ registerUser }) => {
     registerUser(userForm);
   };
 
+  const isButtonDisabled = () => {
+    if (
+      userForm.email === "" ||
+      userForm.username === "" ||
+      userForm.password === ""
+    )
+      return true;
+    return false;
+  };
+
   if (signIn === "google")
     return (
       <FormCard>
@@ -62,6 +72,7 @@ const RegisterForm = ({ registerUser }) => {
           type="submit"
           className="register-form__button"
           onClick={(e) => submitForm(e)}
+          disabled={isButtonDisabled()}
         >
           Register
         </Button>

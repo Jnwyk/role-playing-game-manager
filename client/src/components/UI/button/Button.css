@@ -33,6 +33,10 @@
   transition: 0.5s;
 }
 
+.login-form__button:disabled, .register-form__button:disabled{
+  background-color: #666666;
+}
+
 /* CHARACTER CARD FORM */
 .character-form__button{
   font-size: 20px;

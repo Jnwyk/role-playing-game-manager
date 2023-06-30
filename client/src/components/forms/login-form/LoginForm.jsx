@@ -6,7 +6,7 @@ import RedirectText from "../../UI/redirect-text/RedirectText";
 import GoogleButton from "react-google-button";
 import FormCard from "../../UI/form-card/FormCard";
 
-const LoginForm = ({ loginUser }) => {
+const LoginForm = ({ loginUser, success }) => {
   const [userForm, setUserForm] = useState({
     username: "",
     password: "",
@@ -27,6 +27,11 @@ const LoginForm = ({ loginUser }) => {
     loginUser(userForm);
   };
 
+  const isButtonDisabled = () => {
+    if (userForm.username === "" || userForm.password === "") return true;
+    return false;
+  };
+
   if (signIn === "google")
     return (
       <FormCard>
@@ -42,6 +47,9 @@ const LoginForm = ({ loginUser }) => {
   else
     return (
       <FormCard>
+        {!success && (
+          <div className="login-form__failure-text">Login failed</div>
+        )}
         <LoginTextInput
           placeholder="Username"
           id="username"
@@ -56,6 +64,7 @@ const LoginForm = ({ loginUser }) => {
           type="submit"
           className="login-form__button"
           onClick={(e) => submitForm(e)}
+          disabled={isButtonDisabled()}
         >
           Login
         </Button>

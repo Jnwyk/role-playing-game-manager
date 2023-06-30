@@ -4,14 +4,26 @@ import LoginFooter from "../components/footers/login-footer/LoginFooter";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import axios from "axios";
+import { useState } from "react";
 
 const Login = () => {
+  const [success, setSuccess] = useState(true);
+  const [error, setError] = useState(false);
+
   const handleSetLoginUser = async (user) => {
-    await axios.post("/api/auth/login/traditional", { ...user });
-    console.log("test");
-    window.location.href = "http://localhost:3000/games";
+    const data = await axios
+      .post("/api/auth/login/traditional", { ...user })
+      .catch((error) => setError(true));
+    if (data.data.username)
+      window.location.href = "http://localhost:3000/games";
+    else {
+      setSuccess(false);
+    }
   };
 
+  if (error) {
+    return <div>error</div>;
+  }
   return (
     <>
       <div className="background" />
@@ -19,7 +31,10 @@ const Login = () => {
         <Button className="login__button-top-right">Register</Button>
       </Link>
       <div className="central-container">
-        <LoginForm loginUser={(user) => handleSetLoginUser(user)} />
+        <LoginForm
+          loginUser={(user) => handleSetLoginUser(user)}
+          success={success}
+        />
       </div>
 
       <LoginFooter />
