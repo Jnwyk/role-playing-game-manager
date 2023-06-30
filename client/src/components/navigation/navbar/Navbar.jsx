@@ -29,6 +29,7 @@ const Navbar = ({ currentPage }) => {
       <Link to="/lights" className="navbar__link">
         <NavItem
           name="lights"
+          logo="lights"
           active={currentPage === "light" ? true : false}
         />
       </Link>
