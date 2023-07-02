@@ -7,7 +7,7 @@ import { ReactComponent as GenreLogo } from "./assets/world-svgrepo-com.svg";
 import { ReactComponent as MasterLogo } from "./assets/crown-svgrepo-com.svg";
 import { ReactComponent as PlayersLogo } from "./assets/team-fill-svgrepo-com.svg";
 
-const NavItem = ({ name, logo, active }) => {
+const NavbarItem = ({ name, logo, active }) => {
   const pickLogo = () => {
     switch (logo) {
       case "music":
@@ -37,4 +37,4 @@ const NavItem = ({ name, logo, active }) => {
   );
 };
 
-export default NavItem;
+export default NavbarItem;
