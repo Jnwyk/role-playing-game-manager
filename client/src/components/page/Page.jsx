@@ -2,7 +2,7 @@ import { useContext } from "react";
 import "./Page.css";
 import { LoggedUserContext } from "../..";
 import UserCard from "../user-card/UserCard";
-import Navbar from "../navbar/Navbar";
+import Navbar from "../navigation/navbar/Navbar";
 
 const Page = ({ children }) => {
   const userInfo = useContext(LoggedUserContext);

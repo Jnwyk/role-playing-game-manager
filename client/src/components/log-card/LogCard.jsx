@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Button from "../button/Button";
-import WrapCard from "../wrap-card/WrapCard";
+import Button from "../UI/button/Button";
+import Card from "../UI/card/Card";
 import "./LogCard.css";
 
 const LogCard = ({ log, changeText }) => {
@@ -40,7 +40,7 @@ const LogCard = ({ log, changeText }) => {
   };
 
   return (
-    <WrapCard className="log-card">
+    <Card className="log-card">
       <div className="log-card__header-container">
         <div className="log-card__info-container">
           <h2 className="log-card__header-text">Last edit</h2>
@@ -49,7 +49,7 @@ const LogCard = ({ log, changeText }) => {
         <Button onClick={() => handleTextChange()}>{printButtonText()}</Button>
       </div>
       {printTextOrInput()}
-    </WrapCard>
+    </Card>
   );
 };
 

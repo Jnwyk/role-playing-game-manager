@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "./pages/register";
 import Login from "./pages/login";
 import Games from "./pages/games";
-import Tests from "./pages/tests";
 import Music from "./pages/music";
 import Lights from "./pages/lights";
 import Profile from "./pages/profile";
@@ -17,7 +16,6 @@ const App = () => (
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/tests" element={<Tests />} />
         <Route path="/register" element={<Register />} />
         <Route path="/games" element={<Games />} />
         <Route path="/profile" element={<Profile />} />

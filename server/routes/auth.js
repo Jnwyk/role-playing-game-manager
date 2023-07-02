@@ -22,8 +22,8 @@ module.exports = Router()
     passport.authenticate("local", {
       failureRedirect: "http://localhost:3000/",
     }),
-    (req, res, next) => {
-      res.redirect("http://localhost:3000/games");
+    (req, res) => {
+      res.json(req.user);
     }
   )
   .get("/login/google", passport.authenticate("google"))

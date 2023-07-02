@@ -1,27 +1,18 @@
 import "./styles.css";
 import { useState, useEffect } from "react";
+import useFetch from "../hooks/useFetch";
 import axios from "axios";
 import Page from "../components/page/Page.jsx";
-import CharacterForm from "../components/character-form/CharacterForm";
-import CharacterCard from "../components/character-card/CharacterCard";
-import GameCard from "../components/game-card/GameCard";
+import CharacterForm from "../components/forms/character-form/CharacterForm";
+import CharacterCard from "../components/game/character-card/CharacterCard";
 import { useParams } from "react-router-dom";
 import LogCard from "../components/log-card/LogCard";
-import LogForm from "../components/log-form/LogForm";
+import LogForm from "../components/forms/log-form/LogForm";
 
 const Game = () => {
-  const [game, setGame] = useState();
-  const [updateData, setUpdateData] = useState(false);
   const { gameId } = useParams();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await axios
-        .get(`/api/games/${gameId}`)
-        .then((res) => setGame({ ...res.data }));
-    };
-    fetchData();
-  }, [updateData]);
+  const [updateData, setUpdateData] = useState(false);
+  const [game, loading, error] = useFetch(`/api/games/${gameId}`, updateData);
 
   const addNewCharacter = async (character) => {
     setUpdateData(!updateData);

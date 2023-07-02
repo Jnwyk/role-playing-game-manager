@@ -1,4 +1,4 @@
-import GameCard from "../../game-card/GameCard";
+import GameCard from "../game-card/GameCard";
 import "./GameList.css";
 
 const GameList = ({ games }) => {
