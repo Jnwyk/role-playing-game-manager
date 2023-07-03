@@ -1,4 +1,4 @@
-import "./NavItem.css";
+import "./NavbarItem.css";
 import { ReactComponent as MusicLogo } from "./assets/music-notes-svgrepo-com.svg";
 import { ReactComponent as BulbLogo } from "./assets/bulb-svgrepo-com.svg";
 import { ReactComponent as ProfileLogo } from "./assets/profile-circle-svgrepo-com.svg";

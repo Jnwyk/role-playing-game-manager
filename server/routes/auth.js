@@ -38,5 +38,5 @@ module.exports = Router()
     req.logout((err) => {
       if (err) return next(err);
     });
-    return res.redirect("http://localhost:3000/");
+    return res.json({ message: "logout" });
   });
