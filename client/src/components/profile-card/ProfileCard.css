@@ -7,14 +7,21 @@
   border-radius: 100%;
 }
 
+.profile-card__data-container{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .profile-card__data{
-  margin: 16px 0;
+  margin: 8px 0;
 }
 
 .profile-card__title{
-  font-size: 10px;
+  font-size: 12px;
   text-transform: uppercase;
   margin: 2px 0;
+  font-weight: 700;
 }
 
 .profile-card__text{

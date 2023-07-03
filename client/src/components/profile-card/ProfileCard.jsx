@@ -11,11 +11,11 @@ const ProfileCard = ({ user, updateUser }) => {
     picture: user.picture,
     username: user.username,
     email: user.email,
-    password: user.password,
+    password: "********",
+    strategy: user.strategy,
   });
 
   const handleEditInput = (key, value) => {
-    console.log(value);
     setCurrentUser({ ...currentUser, [key]: value });
   };
 
@@ -35,7 +35,6 @@ const ProfileCard = ({ user, updateUser }) => {
   if (editUser === true) {
     return (
       <Card>
-        {console.log(user)}
         <TextInput
           label="Picture"
           id="picture"
@@ -50,20 +49,24 @@ const ProfileCard = ({ user, updateUser }) => {
           changeInput={(value) => handleEditInput("username", value)}
           value={currentUser.username}
         />
-        <TextInput
-          label="Email"
-          id="email"
-          placeholder="type..."
-          changeInput={(value) => handleEditInput("email", value)}
-          value={currentUser.email}
-        />
-        <TextInput
-          label="Password"
-          id="password"
-          placeholder="type..."
-          changeInput={(value) => handleEditInput("password", value)}
-          value={currentUser.password}
-        />
+        {user.strategy === "local" && (
+          <>
+            <TextInput
+              label="Email"
+              id="email"
+              placeholder="type..."
+              changeInput={(value) => handleEditInput("email", value)}
+              value={currentUser.email}
+            />
+            <TextInput
+              label="Password"
+              id="password"
+              placeholder="type..."
+              changeInput={(value) => handleEditInput("password", value)}
+              value={currentUser.password}
+            />
+          </>
+        )}
         <Button onClick={() => handleUpdateUser()}>Update</Button>
         <Button onClick={() => handleLogOut()}>LOG OUT</Button>
       </Card>
@@ -74,7 +77,7 @@ const ProfileCard = ({ user, updateUser }) => {
       <Button onClick={() => setEditUser(true)}>Edit</Button>
       <img
         className="profile-card__picture"
-        src="https://polki.pl/foto/4_3_LARGE/ile-kosztuje-fretka-domowa-co-je-i-jak-o-nia-dbac-2487860.jpg"
+        src={user.picture}
         alt="user-profile"
       />
       <div className="profile-card__data-container">
@@ -82,14 +85,18 @@ const ProfileCard = ({ user, updateUser }) => {
           <h6 className="profile-card__title">username</h6>
           <p className="profile-card__text">{user.username}</p>
         </div>
-        <div className="profile-card__data">
-          <h6 className="profile-card__title">email</h6>
-          <p className="profile-card__text">{user.email}</p>
-        </div>
-        <div className="profile-card__data">
-          <h6 className="profile-card__title">password</h6>
-          <p className="profile-card__text">********</p>
-        </div>
+        {user.strategy === "local" && (
+          <>
+            <div className="profile-card__data">
+              <h6 className="profile-card__title">email</h6>
+              <p className="profile-card__text">{user.email}</p>
+            </div>
+            <div className="profile-card__data">
+              <h6 className="profile-card__title">password</h6>
+              <p className="profile-card__text">********</p>
+            </div>
+          </>
+        )}
       </div>
       <Button onClick={() => handleLogOut()}>LOG OUT</Button>
     </Card>

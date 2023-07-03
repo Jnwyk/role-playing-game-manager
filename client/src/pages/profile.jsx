@@ -9,7 +9,15 @@ const Profile = () => {
   const userInfo = useContext(LoggedUserContext);
 
   const updateUser = async (user) => {
-    await axios.put(`/api/user/`, { ...user });
+    if (user.password === "********") {
+      user.password = undefined;
+    }
+    if (user.strategy === "google")
+      await axios.put("/api/user", {
+        username: user.username,
+        picture: user.picture,
+      });
+    else await axios.put(`/api/user/`, { ...user });
   };
 
   return (

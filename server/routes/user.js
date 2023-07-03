@@ -20,16 +20,27 @@ module.exports = Router()
   })
   .put("/", async (req, res, next) => {
     try {
-      const newPassword = await bcrypt.hash(req.body.password, 10);
-      await User.findOneAndUpdate(
-        { _id: req.session.passport.user._id },
-        {
-          $set: {
-            ...req.body,
-            password: newPassword,
-          },
-        }
-      );
+      if (req.body.password) {
+        const newPassword = await bcrypt.hash(req.body.password, 10);
+        await User.findOneAndUpdate(
+          { _id: req.session.passport.user._id },
+          {
+            $set: {
+              ...req.body,
+              password: newPassword,
+            },
+          }
+        );
+      } else {
+        await User.findOneAndUpdate(
+          { _id: req.session.passport.user._id },
+          {
+            $set: {
+              ...req.body,
+            },
+          }
+        );
+      }
       const user = await User.findById(req.session.passport.user._id);
       req.session.passport.user = user;
       return res.status(200).json({ success: true, user: user });
