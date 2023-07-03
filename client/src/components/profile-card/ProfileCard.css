@@ -1,0 +1,30 @@
+.profile-card__picture{
+  margin: 16px;
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  border: 5px solid #3E5948;
+  border-radius: 100%;
+}
+
+.profile-card__data-container{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.profile-card__data{
+  margin: 8px 0;
+}
+
+.profile-card__title{
+  font-size: 12px;
+  text-transform: uppercase;
+  margin: 2px 0;
+  font-weight: 700;
+}
+
+.profile-card__text{
+  font-size: 18px;
+}
+

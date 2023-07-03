@@ -29,7 +29,7 @@ const App = () => (
 );
 
 async function main() {
-  const userInfo = await fetch("/api/user/logged").then((res) => res.json());
+  const userInfo = await fetch("/api/user").then((res) => res.json());
   console.log(userInfo);
   const root = document.createElement("div");
   const body = document.querySelector("body");

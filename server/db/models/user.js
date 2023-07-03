@@ -20,6 +20,10 @@ const userSchema = new Schema(
       default:
         "https://ed-spaces.com/wp-content/uploads/2020/10/default-avatar-profile-icon-vector-18942381.jpg",
     },
+    strategy: {
+      type: String,
+      enum: ["local", "google"],
+    },
   },
   {
     timestamps: true,

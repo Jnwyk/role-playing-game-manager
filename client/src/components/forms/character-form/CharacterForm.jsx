@@ -25,7 +25,6 @@ const CharacterForm = ({ players, addNewCharacter }) => {
   };
 
   const addStatistics = (key, value) => {
-    console.log(key);
     if (!key || key === "" || !value || value === "") return;
     setCharacter({
       ...character,
