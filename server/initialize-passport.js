@@ -40,6 +40,7 @@ const initialize = () => {
             user = new User({
               username: profile.emails[0].value.split("@")[0],
               email: profile.emails[0].value,
+              strategy: "google",
             });
             await user.save();
             return done(null, user);

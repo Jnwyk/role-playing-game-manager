@@ -10,6 +10,7 @@ module.exports = Router()
         username: req.body.username,
         email: req.body.email,
         password: await bcrypt.hash(req.body.password, 10),
+        strategy: "local",
       });
       await user.save();
       return res.redirect(201, "http://localhost:3000/register");
