@@ -1,0 +1,11 @@
+.colour-card__preview{
+  height: 80px;
+  width: 120px;
+  background-color: #61b1f7;
+}
+
+.colour-card__colour-input-container{
+  display: flex;
+  gap: 24px;
+  margin-top: 12px;
+}
