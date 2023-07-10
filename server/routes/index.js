@@ -5,6 +5,7 @@ const user = require("./user.js");
 const spotify = require("./music.js");
 const character = require("./character.js");
 const log = require("./logs.js");
+const light = require("./light.js");
 
 module.exports = Router()
   .use("/auth", auth)
@@ -12,4 +13,5 @@ module.exports = Router()
   .use("/user", user)
   .use("/spotify", spotify)
   .use("/character", character)
-  .use("/log", log);
+  .use("/log", log)
+  .use("/light", light);
