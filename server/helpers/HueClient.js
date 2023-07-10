@@ -31,6 +31,8 @@ class HueClient {
           brightness: res.data.state.bri,
           hue: res.data.state.hue,
           saturation: res.data.state.sat,
+          xy: [res.data.state.xy[0], res.data.state.xy[1]],
+          ct: res.data.state.ct,
         };
         return light;
       })
@@ -40,7 +42,19 @@ class HueClient {
   async turnLightOnOff(ipAddres, username, lightNumber, value) {
     return await axios
       .put(`http://${ipAddres}/api/${username}/lights/${lightNumber}/state`, {
-        on: value,
+        on: value.on,
+      })
+      .then((res) => res.data)
+      .catch((err) => console.log(err));
+  }
+
+  async changeColor(ipAddres, username, lightNumber, value) {
+    console.log(value);
+    return await axios
+      .put(`http://${ipAddres}/api/${username}/lights/${lightNumber}/state`, {
+        bri: value.bri,
+        sat: value.sat,
+        hue: value.hue,
       })
       .then((res) => res.data)
       .catch((err) => console.log(err));
