@@ -1,0 +1,9 @@
+.colour-dashboard{
+  width: 60vw;
+}
+
+.toggle-lights-card__text{
+  padding-bottom: 8px;
+  font-weight: 100;
+  text-align: center;
+}

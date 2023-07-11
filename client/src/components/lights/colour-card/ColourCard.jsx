@@ -1,11 +1,17 @@
 import "./ColourCard.css";
-import Card from "../UI/card/Card.jsx";
-import TextInput from "../UI/inputs/text-input/TextInput";
+import Card from "../../UI/card/Card.jsx";
+import TextInput from "../../UI/inputs/text-input/TextInput";
 
-const ColourCard = ({ colour }) => {
+const ColourCard = ({ colour, changeColour }) => {
+  const rgbColour = `rgb(${colour.red}, ${colour.green}, ${colour.blue})`;
   return (
     <Card>
-      <div className="colour-card__preview" />
+      <div
+        className="colour-card__preview"
+        style={{
+          backgroundColor: rgbColour,
+        }}
+      />
       <div className="colour-card__colour-input-container">
         <TextInput
           className="colour-card__input"
@@ -13,6 +19,7 @@ const ColourCard = ({ colour }) => {
           label="Red"
           placeholder={colour.red}
           value={colour.red}
+          changeInput={(value) => changeColour("red", value)}
         />
         <TextInput
           className="colour-card__input"
@@ -20,6 +27,7 @@ const ColourCard = ({ colour }) => {
           label="Green"
           placeholder={colour.green}
           value={colour.green}
+          changeInput={(value) => changeColour("green", value)}
         />
         <TextInput
           className="colour-card__input"
@@ -27,6 +35,7 @@ const ColourCard = ({ colour }) => {
           label="Blue"
           placeholder={colour.blue}
           value={colour.blue}
+          changeInput={(value) => changeColour("blue", value)}
         />
       </div>
     </Card>
