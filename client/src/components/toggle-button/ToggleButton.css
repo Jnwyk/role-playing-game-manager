@@ -1,0 +1,61 @@
+.toggle-light-type__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.toggle-light-type__container span {
+  font-size: 28px;
+}
+
+.toggle-light-type {
+  position: relative;
+  height: 66px;
+  width: 120px;
+}
+
+.toggle-light-type input {
+  display: none;
+}
+
+.toggle-light-type__button {
+  background-color: #4C6C58;
+  position: absolute;
+  cursor: pointer;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  transition: 0.2s;
+}
+
+.toggle-light-type__button:before {
+  background-color: #FCDDB0;
+  bottom: 6px;
+  content: "";
+  height: 54px;
+  left: 6px;
+  position: absolute;
+  transition: 0.4s;
+  width: 54px;
+}
+
+input:checked + .toggle-light-type__button:before {
+  transform: translateX(54px);
+  background-color: #4C6C58;
+}
+
+input:checked + .toggle-light-type__button {
+  background-color: #FCDDB0;
+}
+
+.toggle-light-type__button.round {
+  border-radius: 34px;
+  box-shadow: 0px 0px 10px 0 rgba(0,0,0,0.2);
+}
+
+.toggle-light-type__button.round:before {
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px 0 rgba(0,0,0,0.2);
+}
