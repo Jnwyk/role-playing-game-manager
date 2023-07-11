@@ -1,0 +1,4 @@
+.colour-card-container{
+  display: flex;
+  justify-content: space-evenly;
+}
