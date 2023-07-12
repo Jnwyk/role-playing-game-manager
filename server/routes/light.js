@@ -18,18 +18,38 @@ module.exports = Router()
     );
     res.status(200).json({ success: true, light: light });
   })
-  .put("/state/:lightId", async (req, res, next) => {
+  .put("/state", async (req, res, next) => {
     try {
       if (req.body.on === undefined) {
-        throw new Error("data type error");
+        throw new Error("Data not found");
       }
-      const light = await hueClient.turnLightOnOff(
-        ipAddress,
-        username,
-        req.params.lightId,
-        { on: req.body.on }
+      if (typeof req.body.on !== "boolean") {
+        throw new Error("Wrong data type");
+      }
+      const lights = [];
+      lights.push(
+        await hueClient.turnLightOnOff(ipAddress, username, 1, {
+          on: req.body.on,
+        })
       );
-      res.status(200).json({ success: true, light: light });
+      lights.push(
+        await hueClient.turnLightOnOff(ipAddress, username, 2, {
+          on: req.body.on,
+        })
+      );
+      lights.push(
+        await hueClient.turnLightOnOff(ipAddress, username, 3, {
+          on: req.body.on,
+        })
+      );
+      if (
+        lights[0] === undefined ||
+        lights[1] === undefined ||
+        lights[2] === undefined
+      ) {
+        throw new Error("Operation failed");
+      }
+      res.status(200).json({ success: true, lights: lights });
     } catch (error) {
       next(error);
     }
@@ -37,20 +57,23 @@ module.exports = Router()
   .put("/color/:lightId", async (req, res, next) => {
     try {
       if (
-        req.body.r === undefined ||
-        req.body.g === undefined ||
-        req.body.b === undefined
+        req.body.red === undefined ||
+        req.body.green === undefined ||
+        req.body.blue === undefined
       ) {
-        throw new Error("data type error");
+        throw new Error("Data not found");
       }
-      const { r, g, b } = req.body;
-      const [hue, saturation, brightness] = rgbToHsb(r, g, b);
+      const { red, green, blue } = req.body;
+      const [hue, saturation, brightness] = rgbToHsb(red, green, blue);
       const light = await hueClient.changeColor(
         ipAddress,
         username,
         req.params.lightId,
         { bri: brightness, sat: saturation, hue: hue }
       );
+      if (light === undefined) {
+        throw new Error("Operation failed");
+      }
       res.status(200).json({ success: true, light: light });
     } catch (error) {
       next(error);
