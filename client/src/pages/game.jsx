@@ -63,7 +63,7 @@ const Game = () => {
               .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
               .map((log) => (
                 <LogCard
-                  key={log.id}
+                  key={log._id}
                   log={log}
                   changeText={(text) => updateLog(text, log._id)}
                 />
