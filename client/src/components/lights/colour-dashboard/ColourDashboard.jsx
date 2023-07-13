@@ -3,23 +3,27 @@ import { useState } from "react";
 import ColourCard from "../colour-card/ColourCard";
 import ToggleLightsCard from "../toggle-lights-card/ToggleLightsCard";
 
-const ColourDashboard = ({ handleTurnLightOnOff, handleChangeLightColors }) => {
+const ColourDashboard = ({
+  lights,
+  handleTurnLightOnOff,
+  handleChangeLightColors,
+}) => {
   const [isBind, setIsBind] = useState(false);
   const [colours, setColours] = useState([
     {
-      red: 255,
-      green: 255,
-      blue: 255,
+      red: lights[1].r,
+      green: lights[1].g,
+      blue: lights[1].b,
     },
     {
-      red: 255,
-      green: 255,
-      blue: 255,
+      red: lights[1].r,
+      green: lights[2].g,
+      blue: lights[2].b,
     },
     {
-      red: 255,
-      green: 255,
-      blue: 255,
+      red: lights[1].r,
+      green: lights[3].g,
+      blue: lights[3].b,
     },
   ]);
 

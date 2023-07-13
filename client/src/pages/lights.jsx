@@ -1,11 +1,12 @@
 import "./styles.css";
 import axios from "axios";
+import useFetch from "../hooks/useFetch";
 import Page from "../components/page/Page";
 import ColourDashboard from "../components/lights/colour-dashboard/ColourDashboard";
 
 const Lights = () => {
+  const [lights, loading, error] = useFetch("/api/light");
   const setLightsOnOff = async (on) => {
-    console.log(on);
     await axios.put("/api/light/state", { on: on });
   };
 
@@ -18,10 +19,11 @@ const Lights = () => {
       await axios.put(`/api/light/color/${lightNumber}`, colour);
     }
   };
-
+  if (!lights) return <></>;
   return (
     <Page>
       <ColourDashboard
+        lights={lights.lights}
         handleChangeLightColors={(lightNumber, colour, isBind) =>
           setLightColour(lightNumber, colour, isBind)
         }
