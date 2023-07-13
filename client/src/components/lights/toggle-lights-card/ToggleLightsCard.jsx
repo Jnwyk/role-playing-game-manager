@@ -8,12 +8,12 @@ const ToggleLightsCard = ({ turnLightsOnOff, bindLights }) => {
       <div className="toggle-lights-card__button-container">
         <h2 className="toggle-lights-card__text">Turn OFF/ON</h2>
 
-        <ToggleButton toggleButton={turnLightsOnOff} />
+        <ToggleButton toggleButton={(value) => turnLightsOnOff(value)} />
       </div>
       <div className="toggle-lights-card__button-container">
         <h2 className="toggle-lights-card__text">Bind lights</h2>
 
-        <ToggleButton toggleButton={bindLights} />
+        <ToggleButton toggleButton={(value) => bindLights(value)} />
       </div>
     </Card>
   );

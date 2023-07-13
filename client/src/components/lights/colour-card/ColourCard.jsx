@@ -1,8 +1,9 @@
 import "./ColourCard.css";
 import Card from "../../UI/card/Card.jsx";
 import TextInput from "../../UI/inputs/text-input/TextInput";
+import Button from "../../UI/button/Button";
 
-const ColourCard = ({ colour, changeColour }) => {
+const ColourCard = ({ colour, changeColour, setColour }) => {
   const rgbColour = `rgb(${colour.red}, ${colour.green}, ${colour.blue})`;
   return (
     <Card>
@@ -38,6 +39,7 @@ const ColourCard = ({ colour, changeColour }) => {
           changeInput={(value) => changeColour("blue", value)}
         />
       </div>
+      <Button onClick={setColour}>Set</Button>
     </Card>
   );
 };

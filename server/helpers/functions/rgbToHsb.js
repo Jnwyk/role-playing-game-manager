@@ -35,7 +35,7 @@ module.exports = function rgbToHsb(r, g, b) {
   }
 
   hue = Math.round(hue * 65535);
-  saturation = Math.round(saturation * 254);
-  brightness = Math.round(brightness * 254);
+  saturation = Math.round(saturation * 255);
+  brightness = Math.round(brightness * 255);
   return [hue, saturation, brightness];
 };

@@ -8,7 +8,7 @@ const ToggleButton = ({ toggleButton }) => {
           type="checkbox"
           className="toggle-light-type__button"
           id="checkbox"
-          onChange={toggleButton}
+          onChange={(e) => toggleButton(e.target.checked)}
         />
         <div className="toggle-light-type__button round"></div>
       </label>

@@ -3,33 +3,36 @@ import { useState } from "react";
 import ColourCard from "../colour-card/ColourCard";
 import ToggleLightsCard from "../toggle-lights-card/ToggleLightsCard";
 
-const ColourDashboard = () => {
-  const [isOn, setIsOn] = useState(false);
+const ColourDashboard = ({
+  lights,
+  handleTurnLightOnOff,
+  handleChangeLightColors,
+}) => {
   const [isBind, setIsBind] = useState(false);
   const [colours, setColours] = useState([
     {
-      red: 255,
-      green: 255,
-      blue: 255,
+      red: lights[1].r,
+      green: lights[1].g,
+      blue: lights[1].b,
     },
     {
-      red: 255,
-      green: 255,
-      blue: 255,
+      red: lights[1].r,
+      green: lights[2].g,
+      blue: lights[2].b,
     },
     {
-      red: 255,
-      green: 255,
-      blue: 255,
+      red: lights[1].r,
+      green: lights[3].g,
+      blue: lights[3].b,
     },
   ]);
 
-  const turnLightsOnOff = () => {
-    setIsOn(!isOn);
+  const turnLightsOnOff = (value) => {
+    handleTurnLightOnOff(value);
   };
 
-  const bindLights = () => {
-    setIsBind(!isBind);
+  const bindLights = (value) => {
+    setIsBind(value);
   };
 
   const handleChangeColour = (name, value, index) => {
@@ -65,25 +68,25 @@ const ColourDashboard = () => {
 
   return (
     <div className="colour-dashboard">
-      {console.log(colours)}
-      {console.log("Is on: " + isOn)}
-      {console.log("Is bind: " + isBind)}
       <ToggleLightsCard
-        turnLightsOnOff={() => turnLightsOnOff()}
-        bindLights={() => bindLights()}
+        turnLightsOnOff={(value) => turnLightsOnOff(value)}
+        bindLights={(value) => bindLights(value)}
       />
       <div className="colour-card-container">
         <ColourCard
           colour={colours[0]}
           changeColour={(name, value) => handleChangeColour(name, value, 0)}
+          setColour={() => handleChangeLightColors(1, colours[0], isBind)}
         />
         <ColourCard
           colour={colours[1]}
           changeColour={(name, value) => handleChangeColour(name, value, 1)}
+          setColour={() => handleChangeLightColors(2, colours[1], isBind)}
         />
         <ColourCard
           colour={colours[2]}
           changeColour={(name, value) => handleChangeColour(name, value, 2)}
+          setColour={() => handleChangeLightColors(3, colours[2], isBind)}
         />
       </div>
     </div>
