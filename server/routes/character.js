@@ -23,4 +23,22 @@ const getAll = async (req, res, next) => {
   }
 };
 
-module.exports = Router().post("/", create).get("/", getAll);
+const edit = async (req, res, next) => {
+  try {
+    const character = await Character.findOneAndUpdate(
+      { _id: req.params.characterId },
+      { ...req.body }
+    );
+    if (!character) {
+      throw new Error("Position not found");
+    }
+    return res.status(200).json({ msg: "Success", character: character });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = Router()
+  .post("/", create)
+  .get("/", getAll)
+  .put("/:characterId", edit);
