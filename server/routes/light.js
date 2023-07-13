@@ -1,14 +1,29 @@
 const { Router } = require("express");
 const hueClient = require("../helpers/HueClient");
 const rgbToHsb = require("../helpers/functions/rgbToHsb.js");
+const hsbToRgb = require("../helpers/functions/hsbToRgb.js");
 
 const ipAddress = "10.129.224.195";
 const username = "d944ca69c875a425a392f26f9541f";
 
 module.exports = Router()
-  .get("/", async (req, res) => {
-    const lights = await hueClient.fetchLightsInfo(ipAddress, username);
-    res.status(200).json({ success: true, lights: lights });
+  .get("/", async (req, res, next) => {
+    try {
+      const lights = await hueClient.fetchLightsInfo(ipAddress, username);
+      if (!lights) {
+        throw new Error("Operation failed");
+      }
+      for (let light in lights) {
+        [lights[light].r, lights[light].g, lights[light].b] = hsbToRgb(
+          lights[light].hue,
+          lights[light].saturation,
+          lights[light].brightness
+        );
+      }
+      res.status(200).json({ success: true, lights: lights });
+    } catch (error) {
+      next(error);
+    }
   })
   .get("/:lightId", async (req, res) => {
     const light = await hueClient.fetchOneLightInfo(
