@@ -60,6 +60,11 @@
   transform: none;
 }
 
+.character-card__edit-button{
+  position: absolute;
+  right: 5%;
+}
+
 /* STATISTICS FORM */
 .statistics-form__button{
   font-size: 12px;

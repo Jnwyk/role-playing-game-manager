@@ -13,7 +13,6 @@ const CharacterForm = ({ players, addNewCharacter }) => {
     name: "",
     picture: "",
     description: "",
-    profession: "",
     player: "",
     statistics: {},
   });

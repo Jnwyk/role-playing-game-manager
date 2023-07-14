@@ -50,3 +50,7 @@
   justify-content: space-evenly;
   padding: 24px 0;
 }
+
+.character-card{
+  position: relative
+}
