@@ -5,7 +5,11 @@ import Page from "../components/page/Page";
 import ColourDashboard from "../components/lights/colour-dashboard/ColourDashboard";
 
 const Lights = () => {
-  const [lights, loading, error] = useFetch("/api/light");
+  const [lights, loading, error] = useFetch(
+    "/api/light",
+    undefined,
+    JSON.parse(sessionStorage.getItem("lights"))
+  );
   const setLightsOnOff = async (on) => {
     await axios.put("/api/light/state", { on: on });
   };

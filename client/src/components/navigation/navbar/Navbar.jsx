@@ -26,13 +26,23 @@ const Navbar = ({ currentPage }) => {
           active={currentPage === "music" ? true : false}
         />
       </Link>
-      <Link to="/lights" className="navbar__link">
-        <NavbarItem
-          name="lights"
-          logo="lights"
-          active={currentPage === "light" ? true : false}
-        />
-      </Link>
+      {sessionStorage.getItem("lights") ? (
+        <Link to="/lights" className="navbar__link">
+          <NavbarItem
+            name="lights"
+            logo="lights"
+            active={currentPage === "light" ? true : false}
+          />
+        </Link>
+      ) : (
+        <Link to="/login-lights" className="navbar__link">
+          <NavbarItem
+            name="lights"
+            logo="lights"
+            active={currentPage === "light" ? true : false}
+          />
+        </Link>
+      )}
     </nav>
   );
 };

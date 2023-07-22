@@ -9,7 +9,10 @@ const username = "d944ca69c875a425a392f26f9541f";
 module.exports = Router()
   .get("/", async (req, res, next) => {
     try {
-      const lights = await hueClient.fetchLightsInfo(ipAddress, username);
+      const lights = await hueClient.fetchLightsInfo(
+        req.query.ip,
+        req.query.username
+      );
       if (!lights) {
         throw new Error("Operation failed");
       }

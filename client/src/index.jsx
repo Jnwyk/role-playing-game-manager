@@ -7,6 +7,7 @@ import Login from "./pages/login";
 import Games from "./pages/games";
 import Music from "./pages/music";
 import Lights from "./pages/lights";
+import LoginLights from "./pages/login-lights";
 import Profile from "./pages/profile";
 import Game from "./pages/game";
 
@@ -19,6 +20,7 @@ const App = () => (
         <Route path="/register" element={<Register />} />
         <Route path="/games" element={<Games />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/login-lights" element={<LoginLights />} />
         <Route path="/lights" element={<Lights />} />
         <Route path="/music" element={<Music />} />
         <Route path="/game/:gameId" element={<Game />} />
