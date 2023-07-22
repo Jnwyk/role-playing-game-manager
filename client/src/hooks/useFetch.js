@@ -9,11 +9,15 @@ export default function useFetch(url, dependencyVariable, inputData) {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await axios
-        .get(url, { params: inputData })
-        .then((res) => res.data);
-      setData(response);
-      setLoading(false);
+      setTimeout(async () => {
+        const response = await axios
+          .get(url, { params: inputData })
+          .then((res) => res.data);
+        console.log("test");
+        setData(response);
+        setLoading(false);
+      }, 500);
+      return clearTimeout();
     } catch (err) {
       setLoading(false);
       setError(true);

@@ -2,7 +2,6 @@ import { useState } from "react";
 import FormCard from "../UI/form-card/FormCard";
 import TextInput from "../UI/inputs/text-input/TextInput";
 import Button from "../UI/button/Button";
-import "./LightConnectForm.css";
 
 const LightConnectForm = ({ submitLightConnection }) => {
   const [connectData, setConnectData] = useState({ ip: "", username: "" });
