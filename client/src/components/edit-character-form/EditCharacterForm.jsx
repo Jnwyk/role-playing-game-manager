@@ -4,9 +4,12 @@ import TextareaInput from "../UI/inputs/textarea-input/TextareaInput";
 import DropdownInput from "../UI/inputs/dropdown-input/DropdownInput";
 import Card from "../UI/card/Card";
 import { useState } from "react";
+import StatisticsForm from "../forms/statistics-form/StatisticsForm";
 
 const EditCharacterForm = ({ character, players, editCharacter }) => {
   const [characterData, setCharacterData] = useState({ ...character });
+  const [newStatName, setNewStatName] = useState("");
+  const [newStatValue, setNewStatValue] = useState("");
 
   const handleEditCharacter = (e) => {
     e.preventDefault();
@@ -17,12 +20,14 @@ const EditCharacterForm = ({ character, players, editCharacter }) => {
     players.map((player) => player.username);
 
   const handleCharacterInputChange = (key, value, isStat) => {
-    if (isStat)
+    if (isStat) {
       setCharacterData({
         ...characterData,
         statistics: { ...characterData.statistics, [key]: value },
       });
-    else setCharacterData({ ...characterData, [key]: value });
+      setNewStatName("");
+      setNewStatValue("");
+    } else setCharacterData({ ...characterData, [key]: value });
   };
 
   const isCharacterFormOk = () => {
@@ -73,23 +78,51 @@ const EditCharacterForm = ({ character, players, editCharacter }) => {
           handleCharacterInputChange("description", input)
         }
       />
-
       {characterData.statistics &&
         Object.keys(characterData.statistics).map((stat) => {
           return (
-            <TextInput
-              key={stat}
-              className="statistics-form__input"
-              id="stat_name"
-              placeholder="Statistics..."
-              label={stat}
-              changeInput={(input) =>
-                handleCharacterInputChange(stat, input, true)
-              }
-              value={characterData.statistics.stat}
-            />
+            <div key={stat} className="statistics-form__statistic">
+              <TextInput
+                className="statistics-form__input"
+                id="stat_value"
+                placeholder="Value..."
+                label={stat}
+                changeInput={(input) =>
+                  handleCharacterInputChange(stat, input, true)
+                }
+                value={characterData.statistics[stat]}
+              />
+            </div>
           );
         })}
+      {
+        <div className="statistics-form__statistic">
+          <TextInput
+            className="statistics-form__input"
+            id="stat_name"
+            placeholder="Statistics..."
+            label="Name"
+            changeInput={(input) => setNewStatName(input)}
+            value={newStatName}
+          />
+          <TextInput
+            className="statistics-form__input"
+            id="stat_value"
+            placeholder="Value..."
+            label="Value"
+            changeInput={(input) => setNewStatValue(input)}
+            value={newStatValue}
+          />
+          <Button
+            className="statistics-form__button"
+            onClick={(e) =>
+              handleCharacterInputChange(newStatName, newStatValue, true)
+            }
+          >
+            Add
+          </Button>
+        </div>
+      }
       <Button
         type="submit"
         disabled={isCharacterFormOk() ? false : true}
