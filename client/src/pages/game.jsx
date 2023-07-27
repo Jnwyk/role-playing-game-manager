@@ -8,6 +8,7 @@ import CharacterCard from "../components/game/character-card/CharacterCard";
 import { useParams } from "react-router-dom";
 import LogCard from "../components/log-card/LogCard";
 import LogForm from "../components/forms/log-form/LogForm";
+import Spinner from "../components/UI/spinner/Spinner";
 
 const Game = () => {
   const { gameId } = useParams();
@@ -29,7 +30,12 @@ const Game = () => {
     setUpdateData(!updateData);
   };
 
-  if (!game) return <Page></Page>;
+  if (!game)
+    return (
+      <Page>
+        <Spinner />
+      </Page>
+    );
   else
     return (
       <Page>

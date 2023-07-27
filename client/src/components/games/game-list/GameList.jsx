@@ -1,7 +1,7 @@
 import GameCard from "../game-card/GameCard";
 import "./GameList.css";
 
-const GameList = ({ games }) => {
+const GameList = ({ games = [] }) => {
   return (
     <div className="game-list">
       {games.map((game) => (

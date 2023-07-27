@@ -1,0 +1,70 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js add react-spinners
+
+PATH: 
+  C:\Users\nowak\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\nowak\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Users\nowak\AppData\Local\Programs\Python\Python39\Scripts;C:\Windows\System32\OpenSSH;C:\MinGW\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Studia\Semestr V\Projekt_kompetencyjny\OpenCV-MinGW-Build-OpenCV-4.5.2-x64\x64\mingw\bin;C:\Studia\Semestr V\Projekt_kompetencyjny\x86_64-8.1.0-release-posix-seh-rt_v6-rev0\mingw64\bin;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Studia\Semestr V\Projekt_kompetencyjny\x86_64-7.3.0-release-posix-seh-rt_v5-rev0\mingw64\x86_64-w64-mingw32\bin;C:\Studia\Semestr V\Projekt_kompetencyjny\SFML-2.5.1\bin;C:\Program Files (x86)\Java\jdk1.8.0_301\bin;C:\Program Files\MongoDB\Server\6.0\bin\mongod.exe;C:\Users\nowak\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Users\nowak\AppData\Local\Programs\Python\Python39\Scripts;C:\Windows\System32\OpenSSH;C:\MinGW\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Studia\Semestr V\Projekt_kompetencyjny\OpenCV-MinGW-Build-OpenCV-4.5.2-x64\x64\mingw\bin;C:\Studia\Semestr V\Projekt_kompetencyjny\x86_64-8.1.0-release-posix-seh-rt_v6-rev0\mingw64\bin;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Studia\Semestr V\Projekt_kompetencyjny\x86_64-7.3.0-release-posix-seh-rt_v5-rev0\mingw64\x86_64-w64-mingw32\bin;C:\Studia\Semestr V\Projekt_kompetencyjny\SFML-2.5.1\bin;C:\Program Files (x86)\Java\jdk1.8.0_301\bin;C:\Program Files\MongoDB\Server\6.0\bin\mongod.exe;C:\Users\nowak\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\WebDriver\bin;C:\Users\nowak\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\nowak\AppData\Local\GitHubDesktop\bin;C:\Users\nowak\AppData\Local\Programs\mongosh;C:\Users\nowak\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;C:\Program Files\Git\path\to\driver
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.13.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, copyfile 'C:\Users\nowak\AppData\Local\Yarn\Cache\v6\npm-@pmmmwh-react-refresh-webpack-plugin-0.5.10-2eba163b8e7dbabb4ce3609ab5e32ab63dda3ef8-integrity\node_modules\@pmmmwh\react-refresh-webpack-plugin\package.json' -> 'C:\Studia\inzynierka\role-playing-game-manager\client\node_modules\@pmmmwh\react-refresh-webpack-plugin\package.json'
+
+npm manifest: 
+  {
+    "name": "rpg-manager",
+    "version": "0.1.0",
+    "private": true,
+    "proxy": "http://localhost:3080/",
+    "dependencies": {
+      "@testing-library/jest-dom": "^5.16.5",
+      "@testing-library/react": "^13.4.0",
+      "@testing-library/user-event": "^13.5.0",
+      "axios": "^1.3.5",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "react-google-button": "^0.7.2",
+      "react-icons": "^4.8.0",
+      "react-router-dom": "^6.8.0",
+      "react-scripts": "5.0.1",
+      "react-spotify-web-playback": "^0.14.0",
+      "spotify-web-api-node": "^5.0.2",
+      "web-vitals": "^2.1.4"
+    },
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+      "extends": [
+        "react-app",
+        "react-app/jest"
+      ]
+    },
+    "browserslist": {
+      "production": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+      ],
+      "development": [
+        "last 1 chrome version",
+        "last 1 firefox version",
+        "last 1 safari version"
+      ]
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
