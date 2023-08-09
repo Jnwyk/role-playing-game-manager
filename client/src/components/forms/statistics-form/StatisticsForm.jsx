@@ -4,8 +4,8 @@ import "./StatisticsForm.css";
 import TextInput from "../../UI/inputs/text-input/TextInput";
 
 const StatisticsForm = ({ addStatistic, statistics }) => {
-  const [name, setName] = useState();
-  const [value, setValue] = useState();
+  const [name, setName] = useState("");
+  const [value, setValue] = useState("");
 
   const isButtonDisabled = () => {
     if (name !== "" && value !== "") return true;
@@ -14,7 +14,6 @@ const StatisticsForm = ({ addStatistic, statistics }) => {
 
   const handleAddStatistic = (e) => {
     e.preventDefault();
-    console.log("Name: ", typeof name, name, " Value: ", typeof value, value);
     addStatistic(name, value);
     setName("");
     setValue("");
@@ -61,12 +60,6 @@ const StatisticsForm = ({ addStatistic, statistics }) => {
           Add
         </Button>
       </div>
-      <Button
-        className="statistics-form__button"
-        onClick={(e) => handleAddStatistic(e)}
-      >
-        Add new stat
-      </Button>
     </div>
   );
 };

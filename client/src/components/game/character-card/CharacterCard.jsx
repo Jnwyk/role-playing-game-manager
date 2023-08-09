@@ -1,7 +1,9 @@
 import "./CharacterCard.css";
 import Card from "../../UI/card/Card";
+import Button from "../../UI/button/Button";
 
 const CharacterCard = ({
+  editCharacter,
   picture,
   name,
   player,
@@ -10,7 +12,10 @@ const CharacterCard = ({
   statistics = {},
 }) => {
   return (
-    <Card>
+    <Card className="character-card">
+      <Button className="character-card__edit-button" onClick={editCharacter}>
+        Edit
+      </Button>
       <h2 className="character-card__text">{`${profession} ${name}`}</h2>
       <h3 className="character-card__text">{player.username}</h3>
       <img className="character-card__image" src={picture} alt={name} />

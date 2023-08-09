@@ -9,10 +9,12 @@ import { useParams } from "react-router-dom";
 import LogCard from "../components/log-card/LogCard";
 import LogForm from "../components/forms/log-form/LogForm";
 import Spinner from "../components/UI/spinner/Spinner";
+import EditCharacterForm from "../components/edit-character-form/EditCharacterForm";
 
 const Game = () => {
   const { gameId } = useParams();
   const [updateData, setUpdateData] = useState(false);
+  const [editCharacter, setEditCharacter] = useState(false);
   const [game, loading, error] = useFetch(`/api/games/${gameId}`, updateData);
 
   const addNewCharacter = async (character) => {
@@ -30,6 +32,15 @@ const Game = () => {
     setUpdateData(!updateData);
   };
 
+  const handleEditCharacter = async (characterId, editedCharacter) => {
+    if (editCharacter === false) setEditCharacter(characterId);
+    else {
+      await axios.put(`/api/character/${characterId}`, editedCharacter);
+      setUpdateData(!updateData);
+      setEditCharacter(false);
+    }
+  };
+
   if (!game)
     return (
       <Page>
@@ -41,17 +52,34 @@ const Game = () => {
       <Page>
         <div className="game__second-row">
           <div className="game__card">
-            {game.characters.map((character) => (
-              <CharacterCard
-                key={character._id}
-                picture={character.picture}
-                name={character.name}
-                player={character.player}
-                profession={character.profession}
-                description={character.description}
-                statistics={character.statistics}
-              />
-            ))}
+            {game.characters.map((character) => {
+              if (editCharacter === character._id) {
+                return (
+                  <EditCharacterForm
+                    key={character._id}
+                    character={character}
+                    editCharacter={(characterData) =>
+                      handleEditCharacter(character._id, characterData)
+                    }
+                    players={game.game.players}
+                    addNewCharacter={(character) => addNewCharacter(character)}
+                  />
+                );
+              } else {
+                return (
+                  <CharacterCard
+                    key={character._id}
+                    picture={character.picture}
+                    name={character.name}
+                    player={character.player}
+                    profession={character.profession}
+                    description={character.description}
+                    statistics={character.statistics}
+                    editCharacter={() => handleEditCharacter(character._id)}
+                  />
+                );
+              }
+            })}
             <CharacterForm
               players={game.game.players}
               addNewCharacter={(character) => addNewCharacter(character)}
@@ -63,7 +91,7 @@ const Game = () => {
               .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
               .map((log) => (
                 <LogCard
-                  key={log.id}
+                  key={log._id}
                   log={log}
                   changeText={(text) => updateLog(text, log._id)}
                 />
