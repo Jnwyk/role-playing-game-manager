@@ -11,9 +11,13 @@ const gameSchema = new Schema(
         "https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg",
     },
     description: { type: String, default: "No description provided" },
+    mechanics_description: { type: String, default: "No description provided" },
     sessions_played: {
       type: Number,
       default: 0,
+    },
+    dice_type: {
+      type: Number,
     },
     master: {
       type: mongoose.ObjectId,
