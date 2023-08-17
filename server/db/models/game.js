@@ -17,7 +17,7 @@ const gameSchema = new Schema(
       default: 0,
     },
     dice_type: {
-      type: Number,
+      type: String,
     },
     master: {
       type: mongoose.ObjectId,
@@ -28,7 +28,7 @@ const gameSchema = new Schema(
       {
         type: mongoose.ObjectId,
         ref: "User",
-        min: [2, "There must be at least 2 players"],
+        // min: [2, "There must be at least 2 players"],
       },
     ],
   },

@@ -99,3 +99,10 @@
   height: 32px;
   margin: 16px 0 16px 8px;
 }
+
+/* ADD GAME */
+
+.add-game-form__button:disabled{
+  background-color: #cccccc;
+  color: #666666;
+}

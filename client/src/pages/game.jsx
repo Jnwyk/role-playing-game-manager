@@ -10,6 +10,7 @@ import LogCard from "../components/log-card/LogCard";
 import LogForm from "../components/forms/log-form/LogForm";
 import Spinner from "../components/UI/spinner/Spinner";
 import EditCharacterForm from "../components/edit-character-form/EditCharacterForm";
+import GameCard from "../components/game-card/GameCard";
 
 const Game = () => {
   const { gameId } = useParams();
@@ -50,6 +51,9 @@ const Game = () => {
   else
     return (
       <Page>
+        <div>
+          <GameCard game={game.game} />
+        </div>
         <div className="game__second-row">
           <div className="game__card">
             {game.characters.map((character) => {

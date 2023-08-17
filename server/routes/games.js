@@ -10,7 +10,8 @@ const create = async (req, res, next) => {
     const master = await Users.findOne({ username: req.body.master });
     if (!master) throw new Error("specified master of game not found");
     const players = await Users.find({ username: req.body.player });
-    if (!players) throw new Error("specified players not found");
+    // if (!players) throw new Error("specified players not found");
+    console.log(req.body);
     const game = await Games.create({
       ...req.body,
       master: master._id,
@@ -26,7 +27,7 @@ const create = async (req, res, next) => {
       err.message === "specified master of game not found" ||
       err.message === "specified players of game not found"
     )
-      err.status(404);
+      err.status = 404;
     next(err);
   }
 };

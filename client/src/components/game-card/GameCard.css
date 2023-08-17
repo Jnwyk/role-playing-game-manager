@@ -1,0 +1,17 @@
+.game-card__information-container{
+  margin: 16px;
+}
+
+.game-card__description-container{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 16px;
+}
+
+.game-card__information-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  margin: 16px;
+}
