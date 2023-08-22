@@ -12,7 +12,7 @@ const gameSchema = new Schema(
     },
     description: { type: String, default: "No description provided" },
     mechanics_description: { type: String, default: "No description provided" },
-    sessions_played: {
+    sessions: {
       type: Number,
       default: 0,
     },
@@ -28,7 +28,7 @@ const gameSchema = new Schema(
       {
         type: mongoose.ObjectId,
         ref: "User",
-        // min: [2, "There must be at least 2 players"],
+        min: [2, "There must be at least 2 players"],
       },
     ],
   },

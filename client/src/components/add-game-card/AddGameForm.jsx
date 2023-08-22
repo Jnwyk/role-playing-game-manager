@@ -19,6 +19,10 @@ const AddGameForm = ({ addGame }) => {
   });
 
   const handleInputChange = (name, input) => {
+    if (name === "players") {
+      input = input.split(" ");
+    }
+    console.log(input);
     setGame({ ...game, [name]: input });
   };
 
@@ -42,8 +46,9 @@ const AddGameForm = ({ addGame }) => {
     for (const [key, value] of Object.entries(game)) {
       if (value === "") {
         return true;
+      } else {
+        return false;
       }
-      return false;
     }
   };
 
@@ -78,7 +83,14 @@ const AddGameForm = ({ addGame }) => {
         value={game.dice}
       />
       <TextInput
-        label="Sessions"
+        label="Players"
+        placeholder="Player1 Player2 Player3..."
+        id="sessions"
+        changeInput={(input) => handleInputChange("players", input)}
+        value={game.players.toString().replaceAll(",", " ")}
+      />
+      <TextInput
+        label="Number of sessions"
         placeholder="Sessions..."
         id="sessions"
         changeInput={(input) => handleInputChange("sessions", input)}
