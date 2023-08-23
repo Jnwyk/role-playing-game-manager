@@ -6,6 +6,11 @@ const validateEmail = (email) => {
   return re.test(email);
 };
 
+const validatePassowrd = (password) => {
+  const re = new RegExp("^(?=.*[0-9])");
+  return re.test(password);
+};
+
 const userSchema = new Schema(
   {
     username: { type: String, required: [true, "Username is required"] },
@@ -13,8 +18,12 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Email is required"],
       validate: [validateEmail, "Wrong email address"],
+      unique: true,
     },
-    password: String,
+    password: {
+      type: String,
+      validate: [validatePassowrd, "Password does not contain number"],
+    },
     picture: {
       type: String,
       default:
