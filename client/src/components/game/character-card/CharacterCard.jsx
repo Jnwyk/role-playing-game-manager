@@ -5,6 +5,7 @@ import ExternalAccessSection from "../../external-access-section/ExternalAccessS
 
 const CharacterCard = ({
   editCharacter,
+  ipAddress,
   id,
   picture,
   name,
@@ -34,7 +35,7 @@ const CharacterCard = ({
           );
         })}
       </div>
-      <ExternalAccessSection id={id} />
+      <ExternalAccessSection id={id} name={name} ipAddress={ipAddress} />
     </Card>
   );
 };

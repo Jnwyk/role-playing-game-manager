@@ -1,9 +1,31 @@
 .external-access-section{
+  position: relative;
   margin: 16px;
   width: 250px;
 }
 
 .external-access-section__link_qr-code{
-  background: "white"; 
-  padding: "16px"; 
+  background: white; 
+  padding: 8px; 
+  margin: 16px;
+}
+
+.external-access-section__header{
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.external-access-section__link{
+  font-size: 18px;
+  position: relative;
+  font-weight: 800;
+  text-decoration: none;
+  color: black;
+  left: -50%;
+  transition: 0.5s;
+}
+
+.external-access-section__link:hover{
+  color: white;
 }

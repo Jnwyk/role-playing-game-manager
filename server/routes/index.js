@@ -6,6 +6,7 @@ const spotify = require("./music.js");
 const character = require("./character.js");
 const log = require("./logs.js");
 const light = require("./light.js");
+const ipAddress = require("./ipAddress.js");
 
 module.exports = Router()
   .use("/auth", auth)
@@ -14,4 +15,5 @@ module.exports = Router()
   .use("/spotify", spotify)
   .use("/character", character)
   .use("/log", log)
-  .use("/light", light);
+  .use("/light", light)
+  .use("/ip", ipAddress);

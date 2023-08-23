@@ -17,6 +17,7 @@ const Game = () => {
   const [updateData, setUpdateData] = useState(false);
   const [editCharacter, setEditCharacter] = useState(false);
   const [game, loading, error] = useFetch(`/api/games/${gameId}`, updateData);
+  const ipAddress = useFetch("/api/ip");
 
   const addNewCharacter = async (character) => {
     setUpdateData(!updateData);
@@ -73,6 +74,7 @@ const Game = () => {
                 return (
                   <CharacterCard
                     key={character._id}
+                    ipAddress={ipAddress[0]}
                     id={character._id}
                     picture={character.picture}
                     name={character.name}
