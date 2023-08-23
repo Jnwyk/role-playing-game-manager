@@ -13,7 +13,6 @@ export default function useFetch(url, dependencyVariable, inputData) {
         const response = await axios
           .get(url, { params: inputData })
           .then((res) => res.data);
-        console.log("test");
         setData(response);
         setLoading(false);
       }, 500);

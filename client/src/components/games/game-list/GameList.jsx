@@ -1,11 +1,11 @@
-import GameCard from "../game-card/GameCard";
+import GameListCard from "../game-card/GameListCard";
 import "./GameList.css";
 
 const GameList = ({ games = [] }) => {
   return (
     <div className="game-list">
       {games.map((game) => (
-        <GameCard key={game._id} game={game} />
+        <GameListCard key={game._id} game={game} />
       ))}
     </div>
   );

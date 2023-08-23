@@ -35,6 +35,14 @@ const RegisterForm = ({ registerUser }) => {
       userForm.password === ""
     )
       return true;
+    const passwordRegex = new RegExp("^(?=.*[0-9])");
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!passwordRegex.test(userForm.password)) {
+      return true;
+    }
+    if (!emailRegex.test(userForm.email)) {
+      return true;
+    }
     return false;
   };
 

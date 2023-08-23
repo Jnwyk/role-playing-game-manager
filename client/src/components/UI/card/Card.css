@@ -54,3 +54,16 @@
 .character-card{
   position: relative
 }
+
+.game-card__container{
+  margin-top: 48px;
+  margin-bottom: 0;
+  position: relative;
+  width: 60vw;
+}
+
+.add-game-form, .add-game-card{
+  width: 80%;
+  margin-top: 64px;
+  margin-bottom: 0;
+}

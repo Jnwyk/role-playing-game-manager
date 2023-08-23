@@ -9,12 +9,17 @@ const create = async (req, res, next) => {
   try {
     const master = await Users.findOne({ username: req.body.master });
     if (!master) throw new Error("specified master of game not found");
-    const players = await Users.find({ username: req.body.player });
+    let players = await Promise.all(
+      req.body.players.map(async (player) => Users.find({ username: player }))
+    );
+    console.log(players);
+    players = players.map((player) => player[0]._id);
     if (!players) throw new Error("specified players not found");
+    console.log(players);
     const game = await Games.create({
       ...req.body,
       master: master._id,
-      players: [...players],
+      players: players,
     });
     res.status(201).json({ msg: "Game created", game: game });
   } catch (err) {
@@ -26,7 +31,7 @@ const create = async (req, res, next) => {
       err.message === "specified master of game not found" ||
       err.message === "specified players of game not found"
     )
-      err.status(404);
+      err.status = 404;
     next(err);
   }
 };

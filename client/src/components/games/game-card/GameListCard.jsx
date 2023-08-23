@@ -1,8 +1,8 @@
 import LogoAndText from "../../navigation/logo-and-text/LogoAndText";
-import "./GameCard.css";
+import "./GameListCard.css";
 import { Link } from "react-router-dom";
 
-const GameCard = ({ game }) => {
+const GameListCard = ({ game }) => {
   return (
     <Link to={`http://localhost:3000/game/${game._id}`} className="game-card">
       <div className="game-card__image-wrap">
@@ -28,4 +28,4 @@ const GameCard = ({ game }) => {
   );
 };
 
-export default GameCard;
+export default GameListCard;

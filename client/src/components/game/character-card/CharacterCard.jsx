@@ -1,9 +1,12 @@
 import "./CharacterCard.css";
 import Card from "../../UI/card/Card";
 import Button from "../../UI/button/Button";
+import ExternalAccessSection from "../../external-access-section/ExternalAccessSection";
 
 const CharacterCard = ({
   editCharacter,
+  ipAddress,
+  id,
   picture,
   name,
   player,
@@ -32,6 +35,7 @@ const CharacterCard = ({
           );
         })}
       </div>
+      <ExternalAccessSection id={id} name={name} ipAddress={ipAddress} />
     </Card>
   );
 };
