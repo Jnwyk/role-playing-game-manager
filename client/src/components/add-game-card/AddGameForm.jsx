@@ -12,9 +12,8 @@ const AddGameForm = ({ addGame }) => {
     picture: "",
     description: "",
     mechanics_description: "",
-    sessions_played: 0,
+    sessions: "",
     dice_type: "",
-    master: "",
     players: [],
   });
 
@@ -22,7 +21,6 @@ const AddGameForm = ({ addGame }) => {
     if (name === "players") {
       input = input.split(" ");
     }
-    console.log(input);
     setGame({ ...game, [name]: input });
   };
 
@@ -35,21 +33,19 @@ const AddGameForm = ({ addGame }) => {
       picture: "",
       description: "",
       mechanics_description: "",
-      sessions_played: "",
+      sessions: "",
       dice_type: "",
-      master: "",
       players: [],
     });
   };
 
   const isButtonDisabled = () => {
-    for (const [key, value] of Object.entries(game)) {
-      if (value === "") {
-        return true;
-      } else {
-        return false;
-      }
-    }
+    const { players, sessions, dice_type, ...data } = game;
+    console.log(sessions);
+    if (players.length < 2) return true;
+    if (isNaN(sessions) || sessions === "") return true;
+    if (isNaN(dice_type) || dice_type === "") return true;
+    return Object.values(data).some((element) => element === "");
   };
 
   return (
@@ -78,8 +74,8 @@ const AddGameForm = ({ addGame }) => {
       <TextInput
         label="Dice type"
         placeholder="Dice..."
-        id="dice"
-        changeInput={(input) => handleInputChange("dice", input)}
+        id="dice_type"
+        changeInput={(input) => handleInputChange("dice_type", input)}
         value={game.dice_type}
       />
       <TextInput
