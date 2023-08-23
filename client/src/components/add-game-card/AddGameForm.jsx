@@ -80,7 +80,7 @@ const AddGameForm = ({ addGame }) => {
         placeholder="Dice..."
         id="dice"
         changeInput={(input) => handleInputChange("dice", input)}
-        value={game.dice}
+        value={game.dice_type}
       />
       <TextInput
         label="Players"

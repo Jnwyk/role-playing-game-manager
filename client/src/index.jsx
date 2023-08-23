@@ -10,6 +10,7 @@ import Lights from "./pages/lights";
 import LoginLights from "./pages/login-lights";
 import Profile from "./pages/profile";
 import Game from "./pages/game";
+import Character from "./pages/character";
 
 export const LoggedUserContext = createContext();
 
@@ -24,6 +25,7 @@ const App = () => (
         <Route path="/lights" element={<Lights />} />
         <Route path="/music" element={<Music />} />
         <Route path="/game/:gameId" element={<Game />} />
+        <Route path="/character/:characterId" element={<Character />} />
         <Route path="/" element={<Login />} />
       </Routes>
     </BrowserRouter>

@@ -14,6 +14,16 @@ const create = async (req, res, next) => {
   }
 };
 
+const getOne = async (req, res, next) => {
+  try {
+    console.log("test");
+    const character = await Character.findById(req.params.characterId);
+    res.status(200).json({ msg: "Success", character: character });
+  } catch (err) {
+    next(err);
+  }
+};
+
 const getAll = async (req, res, next) => {
   try {
     const characters = await Character.find({});
@@ -41,4 +51,5 @@ const edit = async (req, res, next) => {
 module.exports = Router()
   .post("/", create)
   .get("/", getAll)
+  .get("/:characterId", getOne)
   .put("/:characterId", edit);

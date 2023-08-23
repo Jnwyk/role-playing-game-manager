@@ -12,6 +12,7 @@ const create = async (req, res, next) => {
     let players = await Promise.all(
       req.body.players.map(async (player) => Users.find({ username: player }))
     );
+    console.log(players);
     players = players.map((player) => player[0]._id);
     if (!players) throw new Error("specified players not found");
     console.log(players);

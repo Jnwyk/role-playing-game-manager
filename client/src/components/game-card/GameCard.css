@@ -12,6 +12,12 @@
 .game-card__information-row{
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: center;
   margin: 16px;
+}
+
+.game-card__picture{
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
 }

@@ -1,9 +1,11 @@
 import "./CharacterCard.css";
 import Card from "../../UI/card/Card";
 import Button from "../../UI/button/Button";
+import { Link } from "react-router-dom";
 
 const CharacterCard = ({
   editCharacter,
+  id,
   picture,
   name,
   player,
@@ -32,6 +34,7 @@ const CharacterCard = ({
           );
         })}
       </div>
+      <Link to={`/character/${id}`}>Access to the character</Link>
     </Card>
   );
 };

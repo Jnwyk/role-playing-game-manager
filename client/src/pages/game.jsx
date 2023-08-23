@@ -73,6 +73,7 @@ const Game = () => {
                 return (
                   <CharacterCard
                     key={character._id}
+                    id={character._id}
                     picture={character.picture}
                     name={character.name}
                     player={character.player}

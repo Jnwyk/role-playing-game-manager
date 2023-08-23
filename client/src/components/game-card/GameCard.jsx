@@ -6,7 +6,7 @@ const GameCard = ({ game }) => {
     <Card className="game-card__container">
       <h2>{game.name}</h2>
       <h4>{game.genre}</h4>
-      <img src={game.picture} alt={game.name} />
+      <img className="game-card__picture" src={game.picture} alt={game.name} />
       <div className="game-card__information-container">
         <div className="game-card__description-container">
           <h4>Description</h4>
@@ -23,7 +23,7 @@ const GameCard = ({ game }) => {
           </div>
           <div className="game-card__description-container">
             <h4>Sessions played</h4>
-            <p>{game.sessions_played}</p>
+            <p>{game.sessions}</p>
           </div>
         </div>
       </div>
