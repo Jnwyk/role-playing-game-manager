@@ -1,0 +1,9 @@
+.external-access-section{
+  margin: 16px;
+  width: 250px;
+}
+
+.external-access-section__link_qr-code{
+  background: "white"; 
+  padding: "16px"; 
+}

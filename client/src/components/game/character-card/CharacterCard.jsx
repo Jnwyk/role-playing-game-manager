@@ -1,7 +1,7 @@
 import "./CharacterCard.css";
 import Card from "../../UI/card/Card";
 import Button from "../../UI/button/Button";
-import { Link } from "react-router-dom";
+import ExternalAccessSection from "../../external-access-section/ExternalAccessSection";
 
 const CharacterCard = ({
   editCharacter,
@@ -34,7 +34,7 @@ const CharacterCard = ({
           );
         })}
       </div>
-      <Link to={`/character/${id}`}>Access to the character</Link>
+      <ExternalAccessSection id={id} />
     </Card>
   );
 };
